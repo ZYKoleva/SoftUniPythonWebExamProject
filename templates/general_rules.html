@@ -1,0 +1,20 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_style %}
+    <link rel="stylesheet" href="{%  static 'style/general_rules.css' %}">
+{% endblock %}
+{% block site_content %}
+    <div class="rules-wrapper">
+        <div class="card" style="width: 80rem;">
+            <div class="card-body">
+                <h5 class="card-title rules-card-title">Условия за публикуване на обява</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Само за регистрирани потребители</h6>
+                <p class="card-text rules-wrapper-text text-muted">
+                    След като влезете в системата, вие ще можете да публикувате нова обява или да редактирате ваша обява.
+                    Новите и/или редактирани обяви се преглеждат от администратора на сайта, за да се избегнат злоупотреби.
+                    При установена злоупотреба, обявата ще бъде свалена от сайта и достъпът на потребителят ще бъде спрян.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

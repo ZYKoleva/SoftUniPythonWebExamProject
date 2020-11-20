@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style/base.css' %}">
     <script src="../static/scripts/javascript.js"></script>
+    {% block site_style %}
+    {% endblock %}
+    {% block site_script %}
+    {% endblock %}
 </head>
 <body class="root">
 <div class="header-container">
@@ -22,10 +26,10 @@
 
                 <ul class="top-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'load home page' %}">Регистрация</a>
+                        <a class="nav-link" href="{% url 'load register page' %}">Регистрация</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'load home page' %}">Вход</a>
+                        <a class="nav-link" href="{% url 'load login page' %}">Вход</a>
                     </li>
                 </ul>
             </div>
@@ -33,7 +37,7 @@
         <nav class="nav-wrapper">
             <ul class="'nav-list">
                 <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">За нас</a></li>
+                    <a href="{% url 'load about us page' %}">За нас</a></li>
                 <li class="nav-list-item">
                     <a href="{% url 'load home page' %}">Топ оферти</a></li>
                 <li class="nav-list-item">
@@ -45,7 +49,7 @@
                 <li class="nav-list-item">
                     <a href="{% url 'load home page' %}">Управление на обяви</a></li>
                 <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">Общи условия</a></li>
+                    <a href="{% url 'load general rules' %}">Общи условия</a></li>
             </ul>
         </nav>
     </header>

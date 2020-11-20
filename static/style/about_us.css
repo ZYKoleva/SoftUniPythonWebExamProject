@@ -1,0 +1,15 @@
+.about-us-wrapper {
+    margin-top: 40px;
+    margin-left: 100px;
+}
+
+.about-us-text h5, .rules-card-title {
+    font-family: 'Kalam', cursive;
+    padding-bottom: 10px;
+}
+
+.about-us-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}

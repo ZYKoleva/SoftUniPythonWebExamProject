@@ -1,0 +1,19 @@
+.container-register {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.register-legend{
+    margin: 25px 40px;
+    color: darkred;
+}
+
+.form-register {
+    margin: 20px;
+    padding: 20px;
+    width: 600px;
+}
+
+.btn-register-submit {
+    margin: 10px auto;
+}
