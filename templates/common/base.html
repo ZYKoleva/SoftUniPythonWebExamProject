@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style/base.css' %}">
+    <script src="../static/scripts/javascript.js"></script>
+</head>
+<body class="root">
+<div class="header-container">
+    <header>
+        <div class="row">
+            <div class="col-6">
+                <a class="navbar-brand">REAL ESTATE</a>
+            </div>
+            <div class="col-6">
+
+                <ul class="top-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'load home page' %}">Регистрация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'load home page' %}">Вход</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="nav-wrapper">
+            <ul class="'nav-list">
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">За нас</a></li>
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">Топ оферти</a></li>
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">Продажби</a></li>
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">Наеми</a></li>
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">Търся</a></li>
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">Управление на обяви</a></li>
+                <li class="nav-list-item">
+                    <a href="{% url 'load home page' %}">Общи условия</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
+<div class="content">
+    {% block site_content %}
+    {% endblock %}
+
+</div>
+
+
+</body>
+</html>

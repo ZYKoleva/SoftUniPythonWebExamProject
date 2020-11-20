@@ -1,0 +1,83 @@
+@import'https://use.fontawesome.com/releases/v5.10.2/css/all.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.root{
+    width: 1480px;
+    margin: 30px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* header */
+
+.header-container{
+    top: 0;
+}
+
+header {
+    background-color: rgb(253, 236, 166);
+    border-radius: 5px;
+    height: 150px;
+    width: 100%;
+}
+.navbar-brand{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    font-size: xx-large;
+    font-family: 'Kalam', cursive;
+    display: inline-block;
+}
+.navbar-brand:hover, a.nav-link:hover, .nav-list-item a:hover{
+    color: darkgrey;
+}
+
+.top-nav{
+    margin: 20px 0 0 450px;
+
+}
+
+a.nav-link{
+    color: black;
+}
+
+
+.nav, .nav-item, .header-main {
+    display: inline-block;
+}
+
+
+.nav-wrapper {
+    margin-top: 8px;
+}
+
+ul.nav_list {
+    margin-top: 300px;
+}
+
+.nav-list-item {
+    display: inline-block;
+    margin: 20px;
+}
+
+
+.nav-list-item a {
+    text-decoration: none;
+    color: black
+}
+
+
+#active {
+    color: indianred;
+    font-size: 23px;
+}
+
+
+.content {
+    margin-top: 10px;
+}
+
