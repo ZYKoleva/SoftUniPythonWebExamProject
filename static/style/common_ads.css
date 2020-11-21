@@ -1,0 +1,150 @@
+.additional-filter-form {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+}
+
+
+.content {
+    padding-left: 0;
+}
+
+.search-content {
+
+    background-color: rgb(248, 249, 250);
+}
+
+.form-wrapper {
+    margin-left: 20px;
+    padding-top: 30px;
+}
+
+.filter-btn-wrapper, .col-auto, .form-row{
+    display: inline-block;
+}
+
+.search-btn-wrapper {
+    margin-left: 30px;
+    height: 40px;
+}
+
+.products-row{
+    margin-left: -180px;
+}
+
+.details-content{
+    display: inline-block;
+    width: 600px;
+    margin-right: 50px;
+    margin-left: 10px;
+    vertical-align: top;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.details-images{
+    display: inline-block;
+    width: 800px;
+}
+
+.details-images-item {
+    padding-bottom: 10px;
+}
+
+.container-details-wrapper {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 30px;
+}
+
+.product-details-title, .details-price{
+    display: inline;
+    color: darkred;
+
+}
+
+.details-price{
+    position: absolute;
+    left:500px;
+    font-size: 1.5em;
+
+}
+.euro-sign{
+   font-size: 15px;
+}
+
+.details-location {
+    color: darkred;
+    margin-top: 10px;
+}
+
+.details-list {
+    text-decoration: none;
+    font-size: 15px;
+    list-style-type: none;
+}
+
+.span-brand-label {
+    width:100px;
+    height: 30px;
+}
+
+.front-brand-label{
+    width:120px;
+    position: absolute;
+    margin-top: -240px;
+    margin-left: 5px;
+
+}
+
+.top-offers {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 370px;
+    size: 20px;
+    color: rgb(253, 236, 166)
+
+}
+.reference-number-text {
+    color: indianred;
+    position: absolute;
+    margin-top: 280px;
+    margin-left: 360px;
+    size: 20px;
+}
+
+.details-brand-label {
+    width:120px;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 5px;
+
+}
+
+.card-img-top{
+    max-height: 250px;
+}
+
+.counter-seen {
+    position: absolute;
+    margin-top: -40px;
+    margin-left: 320px;
+    font-size: 0.7em;
+}
+
+.box-body-card-text {
+    height: 120px;
+}
+
+.last-modified {
+    margin-top: 20px;
+    margin-left: 220px;
+    margin-bottom: 50px;
+}
+
+.btn-group-details-edit-delete {
+    margin-top: 20px;
+}
+
+.no-ads-available {
+    margin-left:15px;
+}

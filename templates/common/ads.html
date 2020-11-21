@@ -1,0 +1,48 @@
+{% load static %}
+
+<div class="album py-5 bg-light">
+{% include 'filter_section/additional_filter.html' %}
+    <div class="container">
+        <div class="row products-row">
+            {% if ads %}
+                {% for ad in ads %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+
+                            <img class="card-img-top" src="{{ ad.image_one.url }}" alt="Card image cap">
+                            <span class="span-brand-label"><img class="front-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            {% if ad.top_offer %}
+                                <span><i class="fa fa-star fa-2x top-offers" aria-hidden="true"></i></span>
+                            {% endif %}
+                            <span class="reference-number-text">№ {{ ad.id }}</span>
+                            <div class="card-body">
+                                <span class="counter-seen">Видяна: {{ ad.counter_seen }}</span>
+
+                                <h5 class="card-title">{{ ad.type }} {{ ad.price }} <i
+                                        class="fas fa-euro-sign euro-sign"></i></h5>
+                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.neighbourhood }} </p>
+                                <p class="card-text box-body-card-text">{{ ad.description|truncatewords:30 }}...</p>
+                                <span class="last-modified">
+            <small class="text-muted">Обновена: {{ ad.date_modified|date:"SHORT_DATE_FORMAT" }}</small>
+        </span>
+
+                                <div class="d-flex justify-content-between align-items-center btn-group-details-edit-delete">
+                                    <div class="btn-group">
+                                        <a href="" class="btn btn-sm btn-outline-secondary">Разгледай</a>
+                                        <a href="" class="btn btn-sm btn-outline-secondary">Редактирай</a>
+                                        <a href="" class="btn btn-sm btn-outline-secondary">Изтрий</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p1 class="no-ads-available">Няма обяви, които да отговарят на зададените критерии</p1>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<form action="" method="post" class="additional-filter-form">
+    {% csrf_token %}
+    <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+            <label class="mr-sm-2" for="type">Продажба/Наем</label>
+            {{ filterinput.sale_or_rent }}
+        </div>
+        <div class="col-auto my-1">
+            <label class="mr-sm-2" for="type">Вид на имота</label>
+            {{ filterinput.type }}
+        </div>
+        <div class="col-auto my-1">
+            <label class="mr-sm-2" for="number_rooms">Брой стаи</label>
+            {{ filterinput.number_rooms }}
+        </div>
+
+        <div class="col-auto my-1">
+            <label class="mr-sm-2" for="sort">Сортирай по</label>
+            {{ filterinput.sort }}
+        </div>
+    </div>
+    <div class="filter-btn-wrapper">
+        <button type="submit" class="btn btn-info search-btn-wrapper">Търси</button>
+    </div>
+</form>

@@ -9,9 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style/base.css' %}">
-    <script src="../static/scripts/javascript.js"></script>
     {% block site_style %}
+        <link rel="stylesheet" href="{% static 'style/filter_section.css' %}">
+    <link rel="stylesheet" href="{% static 'style/common_ads.css' %}">
     {% endblock %}
+    <script src="../static/scripts/javascript.js"></script>
+
     {% block site_script %}
     {% endblock %}
 </head>
@@ -26,10 +29,10 @@
 
                 <ul class="top-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'load register page' %}">Регистрация</a>
+                        <a class="nav-link" href="{% url 'load register' %}">Регистрация</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'load login page' %}">Вход</a>
+                        <a class="nav-link" href="{% url 'load login' %}">Вход</a>
                     </li>
                 </ul>
             </div>
@@ -37,17 +40,13 @@
         <nav class="nav-wrapper">
             <ul class="'nav-list">
                 <li class="nav-list-item">
-                    <a href="{% url 'load about us page' %}">За нас</a></li>
+                    <a href="{% url 'load about us' %}">За сайта</a></li>
                 <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">Топ оферти</a></li>
+                    <a href="{% url 'load home' %}">Продавам/Отдавам</a></li>
                 <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">Продажби</a></li>
+                    <a href="">Търся си</a></li>
                 <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">Наеми</a></li>
-                <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">Търся</a></li>
-                <li class="nav-list-item">
-                    <a href="{% url 'load home page' %}">Управление на обяви</a></li>
+                    <a href="">Управление на обяви</a></li>
                 <li class="nav-list-item">
                     <a href="{% url 'load general rules' %}">Общи условия</a></li>
             </ul>

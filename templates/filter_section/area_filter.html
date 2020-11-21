@@ -1,0 +1,26 @@
+<div class="filter-section">
+    <p class="filter-section-labels">
+        <span>Населено място</span>
+        <span>Град или Село</span>
+        <span>Район</span>
+    </p>
+
+<div class="dropdown">
+  <button class="btn btn-sm btn-outline-secondary dropbtn">{{ district.name }}</button>
+  <div class="dropdown-content">
+    <a href="{% url 'load home' %}">Всички</a>
+  </div>
+</div>
+<div class="dropdown">
+ <button class="btn btn-sm btn-outline-secondary dropbtn">{{ city.name }}</button>
+  <div class="dropdown-content">
+    <a href="{% url 'load district' district.id %}">Всички</a>
+  </div>
+</div>
+<div class="dropdown">
+ <button class="btn btn-sm btn-outline-secondary dropbtn">{{ area.name }}</button>
+  <div class="dropdown-content">
+    <a href="{% url 'load city' city.id %}">Всички</a>
+  </div>
+</div>
+</div>

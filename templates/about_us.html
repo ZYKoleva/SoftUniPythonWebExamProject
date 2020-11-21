@@ -7,23 +7,25 @@
 
 {% block site_content %}
     <div class="about-us-wrapper">
-        <div class="card" style="width: 80rem;">
+        <div class="card" style="width: 90rem;">
             <div class="card-body">
                 <h5 class="card-title rules-card-title">Търсите да купите или наемете имот?</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Заповядайте да разгледате нашите
-                    <a href="{% url 'load home page' %}">Топ оферти</a>
-                </h6>
-
+                <p class="card-text rules-wrapper-text text-muted">
+                    Заповядайте да разгледате нашите
+                    <a href="{% url 'load home' %}">обяви</a>
+                </p>
             </div>
             <div class="card-body">
                 <h5 class="card-title rules-card-title">Имате имот, който искате да продадете или отдадете под наем?
                     Публикувате обява при нас!</h5>
-                <h6 class="card-subtitle mb-2 text-muted">За целта е необходимо да се регистрирате в нашия сайт.
-                    След като веднъж сте се регистрирали, от вашият профил ще можете да публикувате и редактирате вашите
-                    обяви.</h6>
                 <p class="card-text rules-wrapper-text text-muted">
-                    <a href="" class="btn btn-info">Регистрация</a>
-                    <a href="" class="btn btn-info">Вход</a>
+                    За целта е необходимо да се регистрирате в нашия сайт.
+                    След като веднъж сте се регистрирали, от вашият профил ще можете да публикувате и редактирате вашите
+                    обяви.
+                </p>
+                <p class="card-text rules-wrapper-text text-muted">
+                    <a href="" class="btn btn-sm btn-outline-secondary">Регистрация</a>
+                    <a href="" class="btn btn-sm btn-outline-secondary">Вход</a>
                 </p>
             </div>
         </div>
