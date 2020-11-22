@@ -1,10 +1,5 @@
 <div class="filter-section">
-    <p class="filter-section-labels">
-        <span>Населено място</span>
-        <span>Град или Село</span>
-        <span>Район</span>
-    </p>
-
+    {% include 'filter_section/partial_filter_section_labels.html' %}
 <div class="dropdown">
   <button class="btn btn-sm btn-outline-secondary dropbtn">{{ district.name }}</button>
   <div class="dropdown-content">

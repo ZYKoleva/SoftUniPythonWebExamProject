@@ -22,7 +22,8 @@
 
                                 <h5 class="card-title">{{ ad.type }} {{ ad.price }} <i
                                         class="fas fa-euro-sign euro-sign"></i></h5>
-                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.neighbourhood }} </p>
+                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.area }} </p>
+                                <p class="card-text text-muted">{{ ad.city }} </p>
                                 <p class="card-text box-body-card-text">{{ ad.description|truncatewords:30 }}...</p>
                                 <span class="last-modified">
             <small class="text-muted">Обновена: {{ ad.date_modified|date:"SHORT_DATE_FORMAT" }}</small>

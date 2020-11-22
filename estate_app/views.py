@@ -67,19 +67,13 @@ def district(request, pk):
     else:
         filterinput = AdditionalFilterForm(request.POST)
         if filterinput.is_valid():
-            sale_or_rent = filterinput.cleaned_data['sale_or_rent']
-            type = filterinput.cleaned_data['type']
-            number_rooms = filterinput.cleaned_data['number_rooms']
-            sort = filterinput.cleaned_data['sort']
-            criteria = set_criteria(sale_or_rent, type, number_rooms)
-            ads = ads.filter(**criteria)
-            sorted_ads = sort_ads(sorting_type=sort, ads=ads)
+            ads = get_ads_filtered_and_sorted(filterinput, ads)
             context = {
                 'district': selected_district,
                 'cities': cities,
                 'areas': areas,
                 'filterinput': filterinput,
-                'ads': sorted_ads,
+                'ads': ads,
             }
             return render(request, 'district_page.html', context)
 
@@ -101,19 +95,13 @@ def city(request, pk):
     else:
         filterinput = AdditionalFilterForm(request.POST)
         if filterinput.is_valid():
-            sale_or_rent = filterinput.cleaned_data['sale_or_rent']
-            type = filterinput.cleaned_data['type']
-            number_rooms = filterinput.cleaned_data['number_rooms']
-            sort = filterinput.cleaned_data['sort']
-            criteria = set_criteria(sale_or_rent, type, number_rooms)
-            ads = ads.filter(**criteria)
-            sorted_ads = sort_ads(sorting_type=sort, ads=ads)
+            ads = get_ads_filtered_and_sorted(filterinput, ads)
             context = {
                 'district': selected_district,
                 'city': selected_city,
                 'areas': areas,
                 'filterinput': filterinput,
-                'ads': sorted_ads,
+                'ads': ads,
             }
             return render(request, 'city_page.html', context)
 
@@ -135,18 +123,12 @@ def area(request, pk):
     else:
         filterinput = AdditionalFilterForm(request.POST)
         if filterinput.is_valid():
-            sale_or_rent = filterinput.cleaned_data['sale_or_rent']
-            type = filterinput.cleaned_data['type']
-            number_rooms = filterinput.cleaned_data['number_rooms']
-            sort = filterinput.cleaned_data['sort']
-            criteria = set_criteria(sale_or_rent, type, number_rooms)
-            ads = ads.filter(**criteria)
-            sorted_ads = sort_ads(sorting_type=sort, ads=ads)
+            ads = get_ads_filtered_and_sorted(filterinput, ads)
             context = {
                 'district': selected_district,
                 'city': selected_city,
                 'area': selected_area,
                 'filterinput': filterinput,
-                'ads': sorted_ads,
+                'ads': ads,
             }
             return render(request, 'area_page.html', context)

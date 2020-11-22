@@ -1,6 +1,7 @@
 def set_criteria(sale_or_rent, type, number_rooms):
     criteria = {}
-    criteria['sale_or_rent'] = sale_or_rent
+    if sale_or_rent != 'Всички':
+        criteria['sale_or_rent'] = sale_or_rent
     if type != 'Всички':
         criteria['type'] = type
     if number_rooms != 'Всички':

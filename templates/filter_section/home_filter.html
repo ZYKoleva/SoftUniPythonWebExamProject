@@ -1,12 +1,8 @@
 <div class="filter-section">
-    <p class="filter-section-labels">
-        <span>Населено място</span>
-        <span>Град или Село</span>
-        <span>Район</span>
-    </p>
+    {% include 'filter_section/partial_filter_section_labels.html' %}
     <div class="dropdown">
 
-  <button class="btn btn-sm btn-outline-secondary dropbtn">Навсякъде</button>
+  <button class="btn btn-sm btn-outline-secondary dropbtn">Всички</button>
   <div class="dropdown-content">
       {% for district in districts %}
     <a href="{% url 'load district' district.id %}">{{ district.name }}</a>
@@ -14,7 +10,7 @@
   </div>
 </div>
 <div class="dropdown">
- <button class="btn btn-sm btn-outline-secondary dropbtn">Всички градове</button>
+ <button class="btn btn-sm btn-outline-secondary dropbtn">Всички</button>
   <div class="dropdown-content">
       {% for city in cities%}
     <a href="{% url 'load city' city.id %}">{{ city.name }}</a>
@@ -22,11 +18,11 @@
   </div>
 </div>
 <div class="dropdown">
- <button class="btn btn-sm btn-outline-secondary dropbtn">Всички квартали</button>
+ <button class="btn btn-sm btn-outline-secondary dropbtn">Всички</button>
   <div class="dropdown-content">
-      {% for area in areas %}
-    <a href="{% url 'load area' area.id %}">{{ area.name }}</a>
-    {% endfor %}
+{#      {% for area in areas %}#}
+{#    <a href="{% url 'load area' area.id %}">{{ area.name }}</a>#}
+{#    {% endfor %}#}
   </div>
 </div>
 </div>

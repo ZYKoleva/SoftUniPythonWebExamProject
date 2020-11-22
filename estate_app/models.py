@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 from static.others.filter_choice import SALE_RENT_CHOICES, DISTRICT_CHOICES, CITY_CHOICES, AREA_CHOICES, TYPE_CHOICES, \
     CONSTRUCTION_CHOICES, ROOM_CHOICES, FURNITURE_CHOICES, ELEVATOR_CHOICES, SEARCH_TYPE_CHOICES, SEARCH_ROOM_CHOICES, \
-    SEARCH_SORT_CHOICES
+    SEARCH_SORT_CHOICES, SEARCH_SALE_RENT_CHOICES
 
 
 class District(models.Model):
@@ -72,4 +72,4 @@ class AdditionalFilter(models.Model):
     type = models.CharField(max_length=100, choices=SEARCH_TYPE_CHOICES, default=SEARCH_TYPE_CHOICES[0])
     number_rooms = models.CharField(max_length=100, choices=SEARCH_ROOM_CHOICES, default = SEARCH_ROOM_CHOICES[0])
     sort = models.CharField(max_length=100, choices=SEARCH_SORT_CHOICES, default=SEARCH_SORT_CHOICES[0])
-    sale_or_rent = models.CharField(max_length=100, choices=SALE_RENT_CHOICES, default=SALE_RENT_CHOICES[0])
+    sale_or_rent = models.CharField(max_length=100, choices=SEARCH_SALE_RENT_CHOICES, default=SEARCH_SALE_RENT_CHOICES[0])
