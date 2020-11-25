@@ -1,0 +1,109 @@
+{% load static %}
+
+<div class="container-details-wrapper">
+    <div class="details-content">
+        <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type|lower }}</h3>
+        <span class="details-price">{{ ad.price }} <i class="fas fa-euro-sign euro-sign"></i></span>
+        <h5 class="details-location">{{ ad.area }}</h5>
+        <ul class="details-list">
+            <li><strong>Етаж: </strong>{{ ad.floor }} от {{ ad.total_floors }}</li>
+            <li><strong>Строителство: </strong>{{ ad.construction }}</li>
+            <li><strong>Обзаведдане: </strong>{{ ad.furniture }}</li>
+            <li><strong>Асансьор: </strong>{{ ad.elevator }}</li>
+            <li><strong>Година на строеж: </strong>{{ ad.built_date }}</li>
+        </ul>
+        <section>
+            {{ ad.description }}
+        </section>
+
+    </div>
+    <div class="details-images">
+        <div class="container">
+
+            <div class="row">
+                    {% if ad.image_one %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_one.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_two %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_two.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_three %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_three.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_four %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_four.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_five %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_five.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_six %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_six.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_seven %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_seven.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_eight %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_eight.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_nine %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_nine.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+                                {% if ad.image_ten %}
+                        <div class="col-6 details-images-item">
+                            <span class="span-brand-label"><img class="details-brand-label"
+                                                                src="{% static 'img/RealEstateBrand.jpg' %}"
+                                                                alt="Real Estate"></span>
+                            <img class="card-img-top" src="{{ad.image_ten.url}}" alt="Card image cap">
+                        </div>
+                    {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</div>

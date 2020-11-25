@@ -1,27 +1,22 @@
 {% extends 'common/base.html' %}
 {% load static %}
-    {% block site_style %}
-        <link rel="stylesheet" href="{%  static 'style/register_login.css' %}">
-    {% endblock %}
+{% block site_style %}
+    <link rel="stylesheet" href="{% static 'style/register_login.css' %}">
+{% endblock %}
 {% block site_content %}
-<div class="container-register">
-                <legend class="register-legend">Register</legend>
-                <form action="#" method="post" class="form-register">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-register-submit">Submit</button>
-                <p class="field">
-                    <span>If you already have profile click <a href="{% url 'load login' %}">HERE</a> to log in</span>
-                </p>
-                </form>
+    <div class="container-register">
+    <h5 class="register-title">Регистрация</h5>
+    <form action="{% url 'register' %}" method="post" class="form-register">
+    {% csrf_token %}
+        {{ register_form.errors }}
+       {{ register_form.username.label }}
+       {{ register_form.username }}
 
-
+       {{ register_form.password1.label }}
+       {{ register_form.password1 }}
+       {{ register_form.password2.label }}
+       {{ register_form.password2 }}
+        <button class="btn btn-info btn-register-submit">Запази</button>
+    </form>
     </div>
 {% endblock %}

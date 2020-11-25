@@ -38,3 +38,4 @@ def get_ads_filtered_and_sorted(filterinput, ads):
     else:
         ads = sort_ads(sorting_type=sort, ads=ads)
     return ads
+

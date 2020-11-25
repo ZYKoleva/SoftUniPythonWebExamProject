@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'estate_app',
+    'estate_app_auth'
 ]
 
 MIDDLEWARE = [

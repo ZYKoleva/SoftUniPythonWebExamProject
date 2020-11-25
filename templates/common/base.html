@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'style/base.css' %}">
     {% block site_style %}
         <link rel="stylesheet" href="{% static 'style/filter_section.css' %}">
-    <link rel="stylesheet" href="{% static 'style/common_ads.css' %}">
+        <link rel="stylesheet" href="{% static 'style/common_ads.css' %}">
     {% endblock %}
     <script src="../static/scripts/javascript.js"></script>
 
@@ -28,12 +28,20 @@
             <div class="col-6">
 
                 <ul class="top-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'load register' %}">Регистрация</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'load login' %}">Вход</a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">Здравей, {{ user.username }}</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Изход</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Вход</a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>

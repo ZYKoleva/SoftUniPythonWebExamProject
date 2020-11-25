@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from estate_app.forms import AdditionalFilterForm
 from estate_app.models import District, DistrictCity, DistrictCityArea, Ad
-from static.others.py_help_func import set_criteria, sort_ads, get_ads_filtered_and_sorted
+from static.others.py_help_func import get_ads_filtered_and_sorted
 
 
 def about_us(request):
@@ -13,41 +13,28 @@ def about_us(request):
 def general_rules(request):
     return render(request, 'general_rules.html')
 
-
-def register(request):
-    return render(request, 'register.html')
-
-
-def login(request):
-    return render(request, 'login.html')
-
-
 def load_home_page(request):
     districts = District.objects.all()
     cities = DistrictCity.objects.all()
     areas = DistrictCityArea.objects.all()
     ads = Ad.objects.all()
-    if request.method == "GET":
-        context = {
-            'districts': districts,
-            'cities': cities,
-            'areas': areas,
-            'ads': ads,
-            'filterinput': AdditionalFilterForm()
-        }
+    for ad in ads:
+        ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
+    context = {
+        'districts': districts,
+        'cities': cities,
+        'areas': areas,
+        'ads': ads,
+    }
+    filterinput = AdditionalFilterForm(request.GET)
+    if filterinput.is_valid():
+        ads = get_ads_filtered_and_sorted(filterinput, ads)
+        context['ads'] = ads
+        context['filterinput'] = filterinput
         return render(request, 'home_page.html', context)
     else:
-        filterinput = AdditionalFilterForm(request.POST)
-        if filterinput.is_valid():
-            ads = get_ads_filtered_and_sorted(filterinput, ads)
-            context = {
-                'districts': districts,
-                'cities': cities,
-                'areas': areas,
-                'filterinput': filterinput,
-                'ads': ads,
-            }
-            return render(request, 'home_page.html', context)
+        context['filterinput'] = AdditionalFilterForm()
+    return render(request, 'home_page.html', context)
 
 
 def district(request, pk):
@@ -55,27 +42,22 @@ def district(request, pk):
     cities = DistrictCity.objects.filter(district_id=pk)
     areas = DistrictCityArea.objects.all()
     ads = Ad.objects.filter(district=selected_district)
-    if request.method == "GET":
-        context = {
-            'district': selected_district,
-            'cities': cities,
-            'areas': areas,
-            'ads': ads,
-            'filterinput': AdditionalFilterForm()
-        }
-        return render(request, 'district_page.html', context)
+    for ad in ads:
+        ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
+    context = {
+        'district': selected_district,
+        'cities': cities,
+        'areas': areas,
+        'ads': ads,
+    }
+    filterinput = AdditionalFilterForm(request.GET)
+    if filterinput.is_valid():
+        ads = get_ads_filtered_and_sorted(filterinput, ads)
+        context['ads'] = ads
+        context['filterinput'] = filterinput
     else:
-        filterinput = AdditionalFilterForm(request.POST)
-        if filterinput.is_valid():
-            ads = get_ads_filtered_and_sorted(filterinput, ads)
-            context = {
-                'district': selected_district,
-                'cities': cities,
-                'areas': areas,
-                'filterinput': filterinput,
-                'ads': ads,
-            }
-            return render(request, 'district_page.html', context)
+        context['filterinput'] = AdditionalFilterForm()
+    return render(request, 'district_page.html', context)
 
 
 def city(request, pk):
@@ -83,27 +65,22 @@ def city(request, pk):
     selected_district = District.objects.get(pk=selected_city.district_id)
     areas = DistrictCityArea.objects.filter(city_id=pk)
     ads = Ad.objects.filter(district=selected_district, city=selected_city)
-    if request.method == "GET":
-        context = {
-            'district': selected_district,
-            'city': selected_city,
-            'areas': areas,
-            'ads': ads,
-            'filterinput': AdditionalFilterForm()
-        }
-        return render(request, 'city_page.html', context)
+    for ad in ads:
+        ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
+    context = {
+        'district': selected_district,
+        'city': selected_city,
+        'areas': areas,
+        'ads': ads,
+    }
+    filterinput = AdditionalFilterForm(request.GET)
+    if filterinput.is_valid():
+        ads = get_ads_filtered_and_sorted(filterinput, ads)
+        context['ads'] = ads
+        context['filterinput'] = filterinput
     else:
-        filterinput = AdditionalFilterForm(request.POST)
-        if filterinput.is_valid():
-            ads = get_ads_filtered_and_sorted(filterinput, ads)
-            context = {
-                'district': selected_district,
-                'city': selected_city,
-                'areas': areas,
-                'filterinput': filterinput,
-                'ads': ads,
-            }
-            return render(request, 'city_page.html', context)
+        context['filterinput'] = AdditionalFilterForm()
+    return render(request, 'city_page.html', context)
 
 
 def area(request, pk):
@@ -111,24 +88,29 @@ def area(request, pk):
     selected_city = DistrictCity.objects.get(pk=selected_area.city_id)
     selected_district = District.objects.get(pk=selected_city.district_id)
     ads = Ad.objects.filter(district=selected_district, city=selected_city, area=selected_area)
-    if request.method == "GET":
-        context = {
-            'district': selected_district,
-            'city': selected_city,
-            'area': selected_area,
-            'ads': ads,
-            'filterinput': AdditionalFilterForm()
-        }
-        return render(request, 'area_page.html', context)
+    for ad in ads:
+        ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
+    context = {
+        'district': selected_district,
+        'city': selected_city,
+        'area': selected_area,
+        'ads': ads,
+    }
+    filterinput = AdditionalFilterForm(request.GET)
+    if filterinput.is_valid():
+        ads = get_ads_filtered_and_sorted(filterinput, ads)
+        context['ads'] = ads
+        context['filterinput'] = filterinput
     else:
-        filterinput = AdditionalFilterForm(request.POST)
-        if filterinput.is_valid():
-            ads = get_ads_filtered_and_sorted(filterinput, ads)
-            context = {
-                'district': selected_district,
-                'city': selected_city,
-                'area': selected_area,
-                'filterinput': filterinput,
-                'ads': ads,
-            }
-            return render(request, 'area_page.html', context)
+        context['filterinput'] = AdditionalFilterForm()
+    return render(request, 'area_page.html', context)
+
+def show_details(request, pk):
+    ad = Ad.objects.get(pk=pk)
+    if request.user.id != ad.created_by_id:
+        ad.increase_counter_seen()
+        ad.save()
+    context = {
+        'ad': ad,
+    }
+    return render(request, 'details.html', context)

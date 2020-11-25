@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('estate_app.urls'))
+    path('admin_estate/', admin.site.urls),
+    path('', include('estate_app.urls')),
+    path('auth/', include('estate_app_auth.urls'))
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

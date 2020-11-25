@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -32,6 +33,7 @@ class DistrictCityArea(models.Model):
 
 
 class Ad(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date_modified = models.DateField(default=datetime.now())
     sale_or_rent = models.CharField(max_length=100, choices=SALE_RENT_CHOICES, blank=False)
     district = models.CharField(max_length=100, choices=DISTRICT_CHOICES, blank=False)
