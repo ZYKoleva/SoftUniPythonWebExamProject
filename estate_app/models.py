@@ -61,6 +61,7 @@ class Ad(models.Model):
     description = models.TextField()
     top_offer = models.BooleanField(default=False)
     counter_seen = models.IntegerField(default=0)
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.id}:  {self.city} {self.area} {self.type}'
@@ -75,3 +76,11 @@ class AdditionalFilter(models.Model):
     number_rooms = models.CharField(max_length=100, choices=SEARCH_ROOM_CHOICES, default = SEARCH_ROOM_CHOICES[0])
     sort = models.CharField(max_length=100, choices=SEARCH_SORT_CHOICES, default=SEARCH_SORT_CHOICES[0])
     sale_or_rent = models.CharField(max_length=100, choices=SEARCH_SALE_RENT_CHOICES, default=SEARCH_SALE_RENT_CHOICES[0])
+
+
+class LookingFor(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_modified = models.DateField(default=datetime.now())
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    approved = models.BooleanField(default=False)

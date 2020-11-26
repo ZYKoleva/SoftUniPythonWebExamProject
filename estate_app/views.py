@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from estate_app.forms import AdditionalFilterForm
-from estate_app.models import District, DistrictCity, DistrictCityArea, Ad
+from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, LookingFor
 from static.others.py_help_func import get_ads_filtered_and_sorted
 
 
@@ -17,7 +17,7 @@ def load_home_page(request):
     districts = District.objects.all()
     cities = DistrictCity.objects.all()
     areas = DistrictCityArea.objects.all()
-    ads = Ad.objects.all()
+    ads = Ad.objects.filter(approved=True)
     for ad in ads:
         ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
     context = {
@@ -41,7 +41,7 @@ def district(request, pk):
     selected_district = District.objects.get(pk=pk)
     cities = DistrictCity.objects.filter(district_id=pk)
     areas = DistrictCityArea.objects.all()
-    ads = Ad.objects.filter(district=selected_district)
+    ads = Ad.objects.filter(approved=True, district=selected_district)
     for ad in ads:
         ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
     context = {
@@ -64,7 +64,7 @@ def city(request, pk):
     selected_city = DistrictCity.objects.get(pk=pk)
     selected_district = District.objects.get(pk=selected_city.district_id)
     areas = DistrictCityArea.objects.filter(city_id=pk)
-    ads = Ad.objects.filter(district=selected_district, city=selected_city)
+    ads = Ad.objects.filter(approved=True, district=selected_district, city=selected_city)
     for ad in ads:
         ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
     context = {
@@ -87,7 +87,7 @@ def area(request, pk):
     selected_area = DistrictCityArea.objects.get(pk=pk)
     selected_city = DistrictCity.objects.get(pk=selected_area.city_id)
     selected_district = District.objects.get(pk=selected_city.district_id)
-    ads = Ad.objects.filter(district=selected_district, city=selected_city, area=selected_area)
+    ads = Ad.objects.filter(approved=True, district=selected_district, city=selected_city, area=selected_area)
     for ad in ads:
         ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
     context = {
@@ -114,3 +114,13 @@ def show_details(request, pk):
         'ad': ad,
     }
     return render(request, 'details.html', context)
+
+
+def looking_for(request):
+    looking_for_items = LookingFor.objects.filter(approved=True)
+    for item in looking_for_items:
+        item.is_creator = request.user.is_superuser or item.created_by_id == request.user.id
+    context = {
+        'looking_for_items': looking_for_items
+    }
+    return render(request, 'looking_for.html', context)

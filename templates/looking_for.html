@@ -1,0 +1,22 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block site_style %}
+    <link rel="stylesheet" href="{% static 'style/looking_for.css' %}">
+{% endblock %}
+
+{% block site_content %}
+
+    <div class="search-content">
+        <div class="container">
+            <div class="div-create-search-for-client">
+                <a href="#" class="btn btn-info"><span class="span-add-text">Добави</span></a>
+            </div>
+            <div class="row search-row search-for-client">
+                {% for looking_for_item in looking_for_items %}
+                    {% include 'common/looking_for_item.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

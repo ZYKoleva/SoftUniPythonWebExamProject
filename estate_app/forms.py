@@ -1,6 +1,6 @@
 from django import forms
 
-from estate_app.models import AdditionalFilter
+from estate_app.models import AdditionalFilter, LookingFor
 
 
 class AdditionalFilterForm(forms.ModelForm):
@@ -19,6 +19,21 @@ class AdditionalFilterForm(forms.ModelForm):
                 'class': 'form-control'
             }),
             'sort': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+        }
+
+
+class LookingForForm(forms.ModelForm):
+    class Meta:
+        model = LookingFor
+        fields = ('title', 'description')
+
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'description': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
         }
