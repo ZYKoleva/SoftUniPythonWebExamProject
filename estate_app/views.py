@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from estate_app.forms import AdditionalFilterForm
+from estate_app.forms import AdditionalFilterForm, AdForm
 from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, LookingFor
 from static.others.py_help_func import get_ads_filtered_and_sorted
 
@@ -124,3 +124,37 @@ def looking_for(request):
         'looking_for_items': looking_for_items
     }
     return render(request, 'looking_for.html', context)
+
+
+def manage_ads(request):
+    districts = District.objects.all()
+    cities = DistrictCity.objects.all()
+    areas = DistrictCityArea.objects.all()
+    ads = Ad.objects.filter()
+    for ad in ads:
+        ad.is_creator = request.user.is_superuser or ad.created_by_id == request.user.id
+    context = {
+        'districts': districts,
+        'cities': cities,
+        'areas': areas,
+        'ads': ads,
+    }
+    filterinput = AdditionalFilterForm(request.GET)
+    if filterinput.is_valid():
+        ads = get_ads_filtered_and_sorted(filterinput, ads)
+        context['ads'] = ads
+        context['filterinput'] = filterinput
+        return render(request, 'manage_ads.html', context)
+    else:
+        context['filterinput'] = AdditionalFilterForm()
+        return render(request, 'manage_ads.html', context)
+
+
+def create_add(request):
+    if request.method == 'GET':
+        context = {
+            'ad_form': AdForm()
+        }
+        return render(request, 'create_add.html', context)
+    else:
+        pass

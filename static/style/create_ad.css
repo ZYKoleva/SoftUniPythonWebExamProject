@@ -1,0 +1,51 @@
+.manage-ads-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+}
+
+.manage-ads-title-text {
+    font-family: 'Kalam', cursive;
+    font-size: 30px;
+}
+
+
+.manage-ads {
+    width: 1480px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.top-offer-checkbox-wrapper {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.create-ad-description {
+    max-width: 900px;
+    margin-left: 250px;
+
+
+}
+.create-ad-description-text {
+    width: 100%;
+
+}
+
+.save-create-ad, .cancel-create-ad {
+    display: inline-block;
+}
+
+.btns-create-ad {
+    margin: 20px auto;
+}
+
+

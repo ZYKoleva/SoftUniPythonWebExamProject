@@ -1,0 +1,141 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block site_style %}
+    <link rel="stylesheet" href="{% static 'style/create_ad.css' %}">
+{% endblock %}
+
+{% block site_content %}
+    <div class="manage-ads">
+        <div class="manage-ads-title">
+            <h4 class="manage-ads-title-text">Моята Нова Обява</h4>
+        </div>
+        <div>
+            <div class="form-check top-offer-checkbox-wrapper">
+                <label class="form-check-label" for="exampleCheck1">Топ Оферта</label>
+                {{ ad_form.top_offer }}
+
+            </div>
+
+        </div>
+
+
+        <form class="sections-create-add" method="post">
+            <div class="container">
+            <div class="section-wrapper">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Продажба или наем</label>
+                    {{ ad_form.sale_or_rent }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Област</label>
+                    {{ ad_form.district }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Град/Село</label>
+                    {{ ad_form.city }}
+                </div>
+                                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Квартал</label>
+                    {{ ad_form.city }}
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Вид</label>
+                    {{ ad_form.type }}
+                </div>
+                                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Строителство</label>
+                    {{ ad_form.construction }}
+                </div>
+
+            </div>
+            <div class="section-wrapper">
+                <div class="form-group">
+                    <label for="exampleFormControl">Етаж</label>
+                    {{ ad_form.floor }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Общо Етажи</label>
+                    {{ ad_form.total_floors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Брой стаи</label>
+                    {{ ad_form.number_rooms }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Обзавеждане</label>
+                    {{ ad_form.furniture }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Асансьор</label>
+                    {{ ad_form.elevator }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Година на строеж</label>
+                    {{ ad_form.built_date }}
+                </div>
+            </div>
+            <div class="section-wrapper">
+
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 1</label>
+                    {{ ad_form.image_one }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 2</label>
+                    {{ ad_form.image_two }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 3</label>
+                    {{ ad_form.image_three }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 4</label>
+                    {{ ad_form.image_four }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 5</label>
+                    {{ ad_form.image_five }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 6</label>
+                    {{ ad_form.image_six }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 7</label>
+                    {{ ad_form.image_seven }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 8</label>
+                    {{ ad_form.image_eight }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 9</label>
+                    {{ ad_form.image_nine }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControl">Снимкa 10</label>
+                    {{ ad_form.image_ten }}
+                </div>
+
+            </div>
+            </div>
+
+            <div class="form-group create-ad-description">
+                <label for="create-ad-description-text">Описание</label>
+                {{ ad_form.description }}
+            </div>
+            <div class="btns-create-ad">
+                <div class="save-create-ad">
+                    <a href="{% url 'show details' pk=1 %}" class="btn btn-info">Запази обявата</a>
+                </div>
+                <div class="cancel-create-ad">
+                    <a href="{% url 'manage ads' %}" class="btn btn-info">Откажи</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

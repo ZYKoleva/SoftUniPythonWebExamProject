@@ -1,0 +1,12 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+
+{% block site_content %}
+    <div class="create-add">
+        <a href="{% url 'create ad' %}" class="btn btn-info">Добави обява</a>
+    </div>
+    {% include 'filter_section/home_filter.html' %}
+    {% include 'common/ads.html' %}
+
+{% endblock %}
