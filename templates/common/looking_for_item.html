@@ -1,9 +1,10 @@
-{% extends 'common/base.html' %}
-{% load static %}
-{% block site_style %}
-    <link rel="stylesheet" href="{% static 'style/looking_for.css' %}">
-{% endblock %}
-
-{% block site_content %}
-
-{% endblock %}
+<div class="col-md-4">
+    <div class="card mb-4 box-shadow">
+        <div class="card-body">
+            <details>
+                <summary>{{ looking_for_item.title}}</summary>
+                <p>{{ looking_for_item.description}}</p>
+            </details>
+        </div>
+    </div>
+</div>

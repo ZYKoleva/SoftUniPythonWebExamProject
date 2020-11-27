@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
@@ -125,7 +126,7 @@ def looking_for(request):
     }
     return render(request, 'looking_for.html', context)
 
-
+@login_required()
 def manage_ads(request):
     districts = District.objects.all()
     cities = DistrictCity.objects.all()
@@ -150,6 +151,7 @@ def manage_ads(request):
         return render(request, 'manage_ads.html', context)
 
 
+@login_required()
 def create_add(request):
     if request.method == 'GET':
         context = {
