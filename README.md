@@ -24,12 +24,6 @@
         o View Ad's details
             o Edit
             o Delete
-            o Approve
-        o Manage My Ads
-            o Create new
-            o Edit
-            o Delete
-            o Approve
     **Looking for**
         o View all posts
         o Create new posts
