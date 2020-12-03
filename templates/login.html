@@ -10,7 +10,7 @@
     {% csrf_token %}
         <div class="form-group ">
             {% if wrong_credentials %}
-            <span>Потребителското име и/или парол не съвпадат. Моля опитайте пак</span>
+            <span>Потребителското име и/или паролата не съвпадат. Моля опитайте пак</span>
             {% endif %}
             <label for="exampleInputEmail1">Потребителско име</label>
             {{ login_form.username }}

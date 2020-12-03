@@ -8,9 +8,9 @@
 {% block site_content %}
     <div class="manage-ads">
         <div class="manage-ads-title">
-            <h4 class="manage-ads-title-text">Моята Нова Обява</h4>
+            <h4 class="manage-ads-title-text">Редактирай обява №{{ reference_number }}</h4>
         </div>
-        <form class="sections-create-add" action='{% url 'create ad' %}' method="post" enctype="multipart/form-data">
+        <form class="sections-create-add" action='{% url 'edit add' reference_number %}' method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="container">
                 <div class="section-wrapper">
@@ -128,7 +128,7 @@
             </div>
             <div class="btns-create-ad">
                 <div class="save-create-ad">
-                    <button type="submit" class="btn btn-info">Запази обявата</button>
+                    <button type="submit" class="btn btn-info">Запази промените</button>
                 </div>
                 <div class="cancel-create-ad">
                     {#                    <a href="{% url 'load home' %}" class="btn btn-info">Откажи</a>#}

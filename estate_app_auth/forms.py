@@ -16,12 +16,10 @@ class RegisterForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data['username']
-        username_lower = username.lower()
-        r = User.objects.filter(username=username_lower)
-        if r.count():
-            raise  ValidationError("Потребителското име вече е заето")
+        result = User.objects.filter(username=username)
+        if result.count():
+            raise ValidationError("Потребителското име вече е заето")
         return username
-
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')

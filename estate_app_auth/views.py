@@ -1,5 +1,8 @@
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
 from estate_app_auth.forms import LoginForm, RegisterForm
 
 

@@ -63,6 +63,7 @@ class Ad(models.Model):
     image_nine = models.ImageField(upload_to='images', blank=True)
     image_ten = models.ImageField(upload_to='images', blank=True)
 
+
     def __str__(self):
         return f'{self.id}:  {self.city} {self.area} {self.type}'
 
@@ -72,6 +73,8 @@ class Ad(models.Model):
 
 
 class AdditionalFilter(models.Model):
+    pending_approval = models.BooleanField(default=False)
+    my_add = models.BooleanField(default=False)
     type = models.CharField(max_length=100, choices=SEARCH_TYPE_CHOICES, default=SEARCH_TYPE_CHOICES[0])
     number_rooms = models.CharField(max_length=100, choices=SEARCH_ROOM_CHOICES, default = SEARCH_ROOM_CHOICES[0])
     sort = models.CharField(max_length=100, choices=SEARCH_SORT_CHOICES, default=SEARCH_SORT_CHOICES[0])

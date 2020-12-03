@@ -1,5 +1,23 @@
 <form action="" method="get" class="additional-filter-form">
     {% csrf_token %}
+
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <div>
+                <div class="col-auto my-1 my-add-checkbox-label">
+                    <label class="mr-sm-2" for="type">За одобрение</label>
+                    {{ filterinput.pending_approval }}
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <div class="col-auto my-1 my-add-checkbox-label">
+                    <label class="mr-sm-2" for="type">Моите обяви</label>
+                    {{ filterinput.my_add }}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
     <div class="form-row align-items-center">
         <div class="col-auto my-1">
             <label class="mr-sm-2" for="type">Продажба/Наем</label>

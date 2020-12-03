@@ -38,7 +38,7 @@ class AdForm(forms.ModelForm):
             'total_floors': forms.NumberInput(attrs={
                 'class': 'form-control'
             }),
-            'number_rooms': forms.NumberInput(attrs={
+            'number_rooms': forms.Select(attrs={
                 'class': 'form-control'
             }),
             'furniture': forms.Select(attrs={
@@ -51,6 +51,9 @@ class AdForm(forms.ModelForm):
                 'class': 'form-control'
             }),
             'construction': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'date_modified': forms.DateInput(attrs={
                 'class': 'form-control'
             }),
         }
@@ -74,6 +77,7 @@ class AdditionalFilterForm(forms.ModelForm):
             'sort': forms.Select(attrs={
                 'class': 'form-control'
             }),
+
         }
 
 
