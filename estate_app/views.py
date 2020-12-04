@@ -1,9 +1,11 @@
+import os
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from estate_app.forms import AdditionalFilterForm, AdForm
 from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, LookingFor
-from static.others.py_help_func import process_filter_input
+from static.others.py_help_func import process_filter_input, clean_up_image_files
 
 
 class AboutUsTemplateView(TemplateView):
@@ -132,7 +134,10 @@ def edit_add(request, pk):
     else:
         add_form = AdForm(request.POST, request.FILES or None, instance=ad_to_edit)
         if add_form.is_valid():
+
             form = add_form.save(commit=False)
+            x = request.FILES['image_one'] == ad_to_edit.image_one
+            y = 8
             form.approved = False
             form.save()
             return redirect('show details', pk)
@@ -146,5 +151,6 @@ def edit_add(request, pk):
 @login_required()
 def delete_add(request, pk):
     ad_to_delete = Ad.objects.get(pk=pk)
+    clean_up_image_files(ad_to_delete)
     ad_to_delete.delete()
     return redirect('load home')

@@ -38,8 +38,9 @@
                                             <a href="{% url 'show details' ad.pk %}"
                                                class="btn btn-sm btn-outline-secondary">Разгледай</a>
                                             {% if ad.can_modify %}
-                                                <a href="" class="btn btn-sm btn-outline-secondary">Редактирай</a>
-                                                <a href="" class="btn btn-sm btn-outline-secondary">Изтрий</a>
+                                                <a href="{% url 'edit add' ad.pk %}" class="btn btn-sm btn-outline-secondary">Редактирай</a>
+                                                <a href="{% url 'delete add' ad.pk %}" class="btn btn-sm btn-outline-secondary"
+                                                onclick="return confirm('Сигурни ли сте. че искате да изтриета обява №{{ ad.id }}');">Изтрий</a>
                                             {% endif %}
                                         </div>
                                     </div>

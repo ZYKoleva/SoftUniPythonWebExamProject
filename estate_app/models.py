@@ -34,6 +34,7 @@ class DistrictCityArea(models.Model):
 
 class Ad(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=14)
     date_modified = models.DateField(default=datetime.now())
     sale_or_rent = models.CharField(max_length=100, choices=SALE_RENT_CHOICES, blank=False)
     district = models.CharField(max_length=100, choices=DISTRICT_CHOICES, blank=False)

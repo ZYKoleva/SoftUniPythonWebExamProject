@@ -56,6 +56,9 @@ class AdForm(forms.ModelForm):
             'date_modified': forms.DateInput(attrs={
                 'class': 'form-control'
             }),
+            'phone_number': forms.TextInput(attrs={
+                'class': 'form-control'
+            })
         }
 
 
