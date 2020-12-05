@@ -15,5 +15,5 @@ urlpatterns = [
     path('create_add/', create_add, name='create ad'),
     path('approve_add/<int:pk>/', approve_add, name='approve add'),
     path('edit_add/<int:pk>/', edit_add, name='edit add'),
-    path('delete_add/<int:pk>', delete_add, name='delete add')
+    path('delete_add/<int:pk>/', delete_add, name='delete add')
 ]

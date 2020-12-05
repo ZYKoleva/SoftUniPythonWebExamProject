@@ -1,11 +1,12 @@
-import os
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+
+from estate_app.core.clean_up_images import clean_up_image_files
+from estate_app.core.validator import validate_creator
 from estate_app.forms import AdditionalFilterForm, AdForm
 from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, LookingFor
-from static.others.py_help_func import process_filter_input, clean_up_image_files
+from estate_app.core.sort_filter import process_filter_input
 
 
 class AboutUsTemplateView(TemplateView):
@@ -29,6 +30,7 @@ def load_home_page(request):
     }
     filterinput = AdditionalFilterForm(request.GET)
     return process_filter_input(request, context, 'home_page.html', ads, filterinput)
+
 
 def district(request, pk):
     selected_district = District.objects.get(pk=pk)
@@ -102,6 +104,7 @@ def looking_for(request):
     }
     return render(request, 'looking_for.html', context)
 
+
 @login_required()
 def create_add(request):
     if request.method == 'GET':
@@ -110,6 +113,7 @@ def create_add(request):
         }
         return render(request, 'create_add.html', context)
     else:
+
         add_form = AdForm(request.POST, request.FILES or None)
         if add_form.is_valid():
             form = add_form.save(commit=False)
@@ -122,9 +126,11 @@ def create_add(request):
             }
             return render(request, 'create_add.html', context)
 
+
 @login_required()
 def edit_add(request, pk):
     ad_to_edit = Ad.objects.get(pk=pk)
+    validate_creator(ad_to_edit, request.user)
     if request.method == 'GET':
         context = {
             'ad_form': AdForm(instance=ad_to_edit),
@@ -149,6 +155,7 @@ def edit_add(request, pk):
 @login_required()
 def delete_add(request, pk):
     ad_to_delete = Ad.objects.get(pk=pk)
+    validate_creator(ad_to_delete, request.user)
     clean_up_image_files(ad_to_delete)
     ad_to_delete.delete()
     return redirect('load home')

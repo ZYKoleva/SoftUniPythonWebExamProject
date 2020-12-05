@@ -6,6 +6,12 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.filter-section-wrapper {
+    display: inline-block;
+    height: 89px;
+}
+
+
 .filter-section-labels {
     padding-top: 10px;
     padding-right: 20px;
@@ -17,11 +23,14 @@
     margin-right: 40px;
     margin-left: 50px;
 }
-
 .filter-section {
-    margin-left: 970px;
-    height: 100px;
+    position: fixed;
+    right: 19px;
+}
 
+.filter-section, .create-add {
+    display: inline-block;
+    vertical-align: top;
 }
 
 .dropbtn {
