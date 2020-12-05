@@ -136,8 +136,6 @@ def edit_add(request, pk):
         if add_form.is_valid():
 
             form = add_form.save(commit=False)
-            x = request.FILES['image_one'] == ad_to_edit.image_one
-            y = 8
             form.approved = False
             form.save()
             return redirect('show details', pk)

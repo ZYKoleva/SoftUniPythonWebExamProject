@@ -26,7 +26,7 @@ class AdForm(forms.ModelForm):
             'area': forms.Select(attrs={
                 'class': 'form-control'
             }),
-            'type': forms.Select(attrs={
+            'type_premise': forms.Select(attrs={
                 'class': 'form-control'
             }),
             'price': forms.NumberInput(attrs={
@@ -71,7 +71,7 @@ class AdditionalFilterForm(forms.ModelForm):
             'sale_or_rent': forms.Select(attrs={
                 'class': 'form-control'
             }),
-            'type': forms.Select(attrs={
+            'type_premise': forms.Select(attrs={
                 'class': 'form-control'
             }),
             'number_rooms': forms.Select(attrs={

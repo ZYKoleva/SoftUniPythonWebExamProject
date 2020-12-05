@@ -1,12 +1,27 @@
 from django.contrib import admin
 
 # Register your models here.
-from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, AdditionalFilter, LookingFor
+from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, AdditionalFilter, LookingFor, TypePremise, \
+    SaleOrRent, NumberRooms, Construction, Elevator, Furniture, SortOptions
 
 admin.site.register(District)
 admin.site.register(DistrictCity)
 admin.site.register(DistrictCityArea)
-admin.site.register(Ad)
+admin.site.register(TypePremise)
+admin.site.register(SaleOrRent)
+admin.site.register(NumberRooms)
+admin.site.register(Construction)
+admin.site.register(Elevator)
+admin.site.register(Furniture)
 admin.site.register(AdditionalFilter)
+admin.site.register(SortOptions)
 admin.site.register(LookingFor)
+
+
+class AdAdmin(admin.ModelAdmin):
+    list_display = ('id', 'city', 'area', 'type_premise', 'created_by', 'approved')
+    list_filter = ('approved', 'date_modified')
+
+
+admin.site.register(Ad, AdAdmin)
 

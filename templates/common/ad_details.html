@@ -12,13 +12,13 @@
             </form>
         {% endif %}
         <h4> №{{ ad.id }}</h4>
-        <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type|lower }}</h3>
+        <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type_premise|lower }}</h3>
         <span class="details-price">{{ ad.price }} <i class="fas fa-euro-sign euro-sign"></i></span>
         <h5 class="details-location">{{ ad.area }}</h5>
         <ul class="details-list">
             <li><strong>Етаж: </strong>{{ ad.floor }} от {{ ad.total_floors }}</li>
             <li><strong>Строителство: </strong>{{ ad.construction }}</li>
-            <li><strong>Обзаведдане: </strong>{{ ad.furniture }}</li>
+            <li><strong>Обзавеждане: </strong>{{ ad.furniture }}</li>
             <li><strong>Асансьор: </strong>{{ ad.elevator }}</li>
             <li><strong>Година на строеж: </strong>{{ ad.built_date }}</li>
         </ul>
