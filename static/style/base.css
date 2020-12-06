@@ -6,8 +6,6 @@
 }
 
 .root{
-    width: 1480px;
-    margin: 30px 20px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -20,56 +18,45 @@
 header {
     background-color: rgb(253, 236, 166);
     border-radius: 5px;
-    height: 150px;
-    width: 100%;
+    padding: 30px;
+
 }
-.navbar-brand{
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: black;
-    font-size: xx-large;
+.header-wrapper, .top-nav, .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+
+}
+.header-wrapper {
+    justify-content: space-between;
+}
+
+.navbar-brand {
     font-family: 'Kalam', cursive;
-    display: inline-block;
-}
-.navbar-brand:hover, a.nav-link:hover, .nav-list-item a:hover{
-    color: darkgrey;
+    font-size: 2em;
 }
 
-.top-nav{
-    margin: 20px 0 0 450px;
-
+.user-name {
+    font-family: 'Kalam', cursive;
+    font-size: 1.5em;
 }
-
-a.nav-link{
-    color: black;
-}
-
-
-.nav, .nav-item, .header-main {
-    display: inline-block;
-}
-
-
-.nav-wrapper {
-    margin-top: 8px;
-}
-
-ul.nav_list {
-    margin-top: 300px;
+.nav-list {
+    margin-bottom: 0;
 }
 
 .nav-list-item {
-    display: inline-block;
-    margin: 20px;
+    list-style-type: none;
 }
-
-
-.nav-list-item a {
+.nav-list-item a{
+    color: black;
+    margin-right: 20px;
     text-decoration: none;
-    color: black
 }
 
+
+.navbar-brand:hover, a.nav-link:hover, .nav-list-item a:hover{
+    color: darkgrey;
+}
 
 #active {
     color: indianred;
@@ -79,5 +66,17 @@ ul.nav_list {
 
 .content {
     margin-top: 10px;
+}
+
+/*paginator */
+
+.currently-active {
+    background-color: rgb(23, 162, 184);
+    color: white;
+    font-weight: bold;
+}
+
+.next, .previous {
+    color: rgb(23, 162, 184);
 }
 

@@ -1,11 +1,11 @@
 {% extends 'common/base.html' %}
 
 {%  block site_content %}
-        {% if user.is_authenticated %}
-    <div class="create-add">
-        <a href="{% url 'create ad' %}" class="btn btn-info">Добави обява</a>
-    </div>
-    {% endif %}
-    {% include 'filter_section/city_filter.html' %}
-    {% include 'common/ads.html' %}
+{#        {% if user.is_authenticated %}#}
+{#    <div class="create-add">#}
+{#        <a href="{% url 'create ad' %}" class="btn btn-info">Добави обява</a>#}
+{#    </div>#}
+{#    {% endif %}#}
+    {% include 'filter_section/city_filter_responsive.html' %}
+    {% include 'common/ads_with_paginator.html' %}
 {% endblock %}

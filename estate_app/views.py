@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 from estate_app.core.clean_up_images import clean_up_image_files
+from estate_app.core.paginator import create_paginator
 from estate_app.core.validator import validate_creator
 from estate_app.forms import AdditionalFilterForm, AdForm
 from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, LookingFor
@@ -22,6 +24,7 @@ def load_home_page(request):
     cities = DistrictCity.objects.all()
     areas = DistrictCityArea.objects.all()
     ads = Ad.objects.all()
+
     context = {
         'districts': districts,
         'cities': cities,
@@ -29,7 +32,13 @@ def load_home_page(request):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    return process_filter_input(request, context, 'home_page.html', ads, filterinput)
+    # return process_filter_input(request, context, 'home_page.html', ads, filterinput)
+    context = process_filter_input(request, context, ads, filterinput)
+    list_ads = context['ads']
+    context['page_obj'] = create_paginator(request, list_ads)
+    return render(request, 'home_page.html', context)
+
+
 
 
 def district(request, pk):
@@ -44,7 +53,11 @@ def district(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    return process_filter_input(request, context, 'district_page.html', ads, filterinput)
+    # return process_filter_input(request, context, 'district_page.html', ads, filterinput)
+    context = process_filter_input(request, context, ads, filterinput)
+    list_ads = context['ads']
+    context['page_obj'] = create_paginator(request, list_ads)
+    return render(request, 'district_page.html', context)
 
 
 def city(request, pk):
@@ -59,7 +72,11 @@ def city(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    return process_filter_input(request, context, 'city_page.html', ads, filterinput)
+    # return process_filter_input(request, context, 'city_page.html', ads, filterinput)
+    context = process_filter_input(request, context, ads, filterinput)
+    list_ads = context['ads']
+    context['page_obj'] = create_paginator(request, list_ads)
+    return render(request, 'city_page.html', context)
 
 
 def area(request, pk):
@@ -74,7 +91,11 @@ def area(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    return process_filter_input(request, context, 'area_page.html', ads, filterinput)
+    # return process_filter_input(request, context, 'area_page.html', ads, filterinput)
+    context = process_filter_input(request, context, ads, filterinput)
+    list_ads = context['ads']
+    context['page_obj'] = create_paginator(request, list_ads)
+    return render(request, 'area_page.html', context)
 
 
 def show_details(request, pk):

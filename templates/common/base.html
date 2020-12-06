@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style/base.css' %}">
     {% block site_style %}
-        <link rel="stylesheet" href="{% static 'style/filter_section.css' %}">
+        <link rel="stylesheet" href="{% static 'style/filter-section-responsive.css' %}">
         <link rel="stylesheet" href="{% static 'style/common_ads.css' %}">
     {% endblock %}
     <script src="../static/scripts/javascript.js"></script>
@@ -21,32 +21,27 @@
 <body class="root">
 <div class="header-container">
     <header>
-        <div class="row">
-            <div class="col-6">
-                <a class="navbar-brand">REAL ESTATE</a>
-            </div>
-            <div class="col-6">
+        <section class="header-wrapper">
+            <a class="navbar-brand">REAL ESTATE</a>
+            <ul class="top-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-list-item">Здравей, <span class="user-name">{{ user.username }}</span></li>
+                    <li class="nav-list-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Изход</a>
+                    </li>
+                {% else %}
+                    <li class="nav-list-item">
+                        <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+                    </li>
+                    <li class="nav-list-item">
+                        <a class="nav-link" href="{% url 'login' %}">Вход</a>
+                    </li>
+                {% endif %}
 
-                <ul class="top-nav">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">Здравей, {{ user.username }}</li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Изход</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Вход</a>
-                        </li>
-                    {% endif %}
-
-                </ul>
-            </div>
-        </div>
+            </ul>
+        </section>
         <nav class="nav-wrapper">
-            <ul class="'nav-list">
+            <ul class="nav-list">
                 <li class="nav-list-item">
                     <a href="{% url 'load about us' %}">За сайта</a></li>
                 <li class="nav-list-item">
@@ -64,7 +59,9 @@
     {% endblock %}
 
 </div>
-
+{% if page_obj %}
+    {% include 'common/paginator.html' %}
+{% endif %}
 
 </body>
 </html>
