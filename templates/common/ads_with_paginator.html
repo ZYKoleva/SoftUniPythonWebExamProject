@@ -16,16 +16,13 @@
                             {% else %}
                                 <img class="card-img-top" src="{% static 'img/RealEstate_pic.png' %}" alt="Picture">
                             {% endif %}
-                            {% if ad.top_offer %}
-                                <span><i class="fa fa-star fa-2x top-offers" aria-hidden="true"></i></span>
-                            {% endif %}
                             <span class="reference-number-text">№ {{ ad.id }}</span>
                             <div class="card-body">
                                 <span class="counter-seen">Видяна: {{ ad.counter_seen }}</span>
 
                                 <h5 class="card-title">{{ ad.type_premise }} {{ ad.price }} <i
                                         class="fas fa-euro-sign euro-sign"></i></h5>
-                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.area }} </p>
+                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.area }}, {{ ad.square_meters }} кв.м. </p>
                                 <p class="card-text text-muted">{{ ad.city }} </p>
                                 <p class="card-text box-body-card-text">{{ ad.description|truncatewords:30 }}...</p>
                                 <span class="last-modified">

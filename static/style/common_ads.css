@@ -86,6 +86,7 @@
 .span-brand-label {
     width:100px;
     height: 30px;
+    position: absolute;
 }
 
 .front-brand-label{
@@ -96,14 +97,6 @@
 
 }
 
-.top-offers {
-    position: absolute;
-    margin-top: -50px;
-    margin-left: 370px;
-    size: 20px;
-    color: rgb(253, 236, 166)
-
-}
 .reference-number-text {
     color: indianred;
     position: absolute;
@@ -126,7 +119,7 @@
 
 .counter-seen {
     position: absolute;
-    margin-top: -40px;
+    margin-top: -10px;
     margin-left: 320px;
     font-size: 0.7em;
 }

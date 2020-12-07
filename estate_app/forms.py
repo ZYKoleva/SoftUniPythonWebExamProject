@@ -32,6 +32,9 @@ class AdForm(forms.ModelForm):
             'price': forms.NumberInput(attrs={
                 'class': 'form-control'
             }),
+            'square_meters': forms.NumberInput(attrs={
+                'class': 'form-control'
+            }),
             'floor': forms.NumberInput(attrs={
                 'class': 'form-control'
             }),

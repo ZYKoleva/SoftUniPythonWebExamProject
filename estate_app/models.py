@@ -89,6 +89,7 @@ class Ad(models.Model):
     area = models.ForeignKey(DistrictCityArea, on_delete=models.CASCADE)
     type_premise = models.ForeignKey(TypePremise, on_delete=models.CASCADE)
     price = models.IntegerField()
+    square_meters = models.IntegerField()
     floor = models.IntegerField()
     total_floors = models.IntegerField()
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE)
@@ -97,7 +98,6 @@ class Ad(models.Model):
     elevator = models.ForeignKey(Elevator, on_delete=models.CASCADE)
     built_date = models.CharField(max_length=4, blank=True)
     description = models.TextField()
-    top_offer = models.BooleanField(default=False)
     counter_seen = models.IntegerField(default=0)
 
     image_one = models.ImageField(upload_to='images', blank=True)
