@@ -70,6 +70,9 @@ header {
 
 /*paginator */
 
+.pagination-wrapper {
+    margin-top: 20px;
+}
 .currently-active {
     background-color: rgb(23, 162, 184);
     color: white;

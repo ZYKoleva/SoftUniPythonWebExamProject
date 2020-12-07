@@ -1,6 +1,6 @@
-<div>
+<div class="pagination-wrapper">
     <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
+    <ul class="pagination pagination-sm justify-content-center">
         {% if page_obj.has_previous %}
             <li class="page-item">
                 <a class="page-link previous" href="?page={{ page_obj.previous_page_number }}&{{ get_copy.urlencode }}">Предишна</a>

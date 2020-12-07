@@ -39,8 +39,6 @@ def load_home_page(request):
     return render(request, 'home_page.html', context)
 
 
-
-
 def district(request, pk):
     selected_district = District.objects.get(pk=pk)
     cities = DistrictCity.objects.filter(district_id=pk)

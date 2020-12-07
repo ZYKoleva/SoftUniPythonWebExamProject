@@ -4,6 +4,10 @@
     padding: 0 20px;
 }
 
+.location-filter-wrapper span {
+    text-align: center;
+}
+
 .filter-section, .location-filter-wrapper {
     display: flex;
     flex-wrap: wrap;
