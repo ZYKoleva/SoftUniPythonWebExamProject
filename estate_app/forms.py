@@ -5,7 +5,7 @@ from estate_app.models import AdditionalFilter, Ad
 class AdForm(forms.ModelForm):
     class Meta:
         model = Ad
-        exclude = ('created_by', 'approved', 'counter_seen')
+        exclude = ('created_by', 'approved', 'counter_seen', 'rejected')
 
         widgets = {
             'description': forms.Textarea(attrs={
@@ -60,7 +60,12 @@ class AdForm(forms.ModelForm):
             }),
             'phone_number': forms.TextInput(attrs={
                 'class': 'form-control'
-            })
+            }),
+            'comments_reject': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 5,
+                'cols': 20
+            }),
         }
 
 

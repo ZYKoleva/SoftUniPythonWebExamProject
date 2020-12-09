@@ -1,15 +1,21 @@
 window.onload = function onload() {
     let mainURL = 'http://127.0.0.1:8000/'
-    console.log(window.location.href)
     if (window.location.href === mainURL + 'about/') {
-        console.log(document.querySelectorAll('.nav-list-item a'))
-        document.querySelectorAll('.nav-list-item a')[1].setAttribute('id', 'active');
-
+        document.querySelector('.nav-link-about').setAttribute('id', 'active');
     }
     if (window.location.href === mainURL) {
-        document.querySelectorAll('.nav-list-item a')[2].setAttribute('id', 'active');
+        document.querySelector('.nav-link-rent-sale').setAttribute('id', 'active');
     }
     if (window.location.href === mainURL + 'general_rules/') {
-        document.querySelectorAll('.nav-list-item a')[3].setAttribute('id', 'active');
+        document.querySelector('.nav-link-general-rules').setAttribute('id', 'active');
+    }
+    if(window.location.href.includes(mainURL + 'district/')){
+         document.querySelector('.nav-link-rent-sale').setAttribute('id', 'active');
+    }
+        if(window.location.href.includes(mainURL + 'area/')){
+         document.querySelector('.nav-link-rent-sale').setAttribute('id', 'active');
+    }
+            if(window.location.href.includes(mainURL + 'city/')){
+         document.querySelector('.nav-link-rent-sale').setAttribute('id', 'active');
     }
 }

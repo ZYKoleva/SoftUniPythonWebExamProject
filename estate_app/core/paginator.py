@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 
-num_items_per_page = 6
+num_items_per_page = 3
 
 
 def create_paginator(request, list_obj):

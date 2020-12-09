@@ -8,6 +8,11 @@
 
 }
 
+.approve-form {
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
 .details-images{
     display: inline-block;
     width: 800px;
@@ -118,4 +123,13 @@
 .telephone-number {
     margin-left: 15px;
     color: blue;
+}
+
+.ad_rejected_msg {
+    margin-left: 20px;
+    font-family: 'Kalam', cursive;
+}
+.product-rejected-title, .product-rejected-text {
+    color: indianred;
+    font-family: 'Kalam', cursive;
 }

@@ -1,0 +1,20 @@
+{% extends 'common/base.html' %}
+
+{%  block site_content %}
+
+    <section class="reject_ad">
+    <h4> №{{ ad.id }}</h4>
+        <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type_premise|lower }}</h3>
+        <h5 class="details-location">{{ ad.city }}, {{ ad.area }}</h5>
+
+<form method="post" action="{% url 'reject add' ad.id %}">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="comments_reject">Коментар</label>
+    {{ ad_to_reject.comments_reject}}
+  </div>
+    <button type="submit" class="btn btn-info">Запази коментара</button>
+</form>
+    </section>
+{% endblock %}
+

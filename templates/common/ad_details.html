@@ -1,15 +1,30 @@
 {% load static %}
-{% if not ad.approved and not user.is_superuser %}
-    <h6 class="product-details-title">Обявата Ви e запазена. Когато бъде одобрена, ще бъде видима за всички.</h6>
-{% endif %}
+<section class="ad_rejected_msg">
+    {% if ad.rejected %}
+
+        <h5 class="product-rejected-title">Обявата не е одобрена</h5>
+        <p class="product-rejected-text">{{ ad.comments_reject }}</p>
+
+    {% elif not ad.approved and not user.is_superuser %}
+        <h6 class="product-details-title">Обявата Ви e запазена. Когато бъде одобрена, ще бъде видима за всички.</h6>
+
+    {% endif %}
+</section>
 <div class="container-details-wrapper">
     <div class="details-content">
 
         {% if user.is_superuser and not ad.approved %}
-            <form action="{% url 'approve add' ad.id %}" method="post">
-                {% csrf_token %}
-                <button class="btn btn-danger" type="submit">Одобри обявата</button>
-            </form>
+            {% if not ad.rejected %}
+                <form action="{% url 'approve add' ad.id %}" method="post" class="approve-form">
+                    {% csrf_token %}
+                    <button class="btn btn-info" type="submit">Одобри обявата</button>
+                    <a href="{% url 'reject add' ad.id %}" class="btn btn-danger reject-btn">Отхвърли обявата</a>
+                </form>
+            {% else %}
+                <h5>Обявата не е одобрена</h5>
+                <p>{{ ad.comments_reject }}</p>
+
+            {% endif %}
         {% endif %}
         <h4> №{{ ad.id }}</h4>
         <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type_premise|lower }}</h3>
@@ -26,19 +41,20 @@
         <section>
             {{ ad.description }}
         </section>
-        {% if ad.created_by == user or user.is_superuser%}
+        {% if ad.created_by == user or user.is_superuser %}
 
-        <div class="d-flex justify-content-between align-items-center btn-group-details-edit-delete">
-            <div class="btn-group">
-                <a href="{% url 'edit add' ad.id %}" class="btn btn-sm btn-outline-secondary">Редактирай</a>
-                <a href="{% url 'delete add' ad.id %}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Сигурни ли сте. че искате да изтриета обява №{{ ad.id }}');">Изтрий</a>
+            <div class="d-flex justify-content-between align-items-center btn-group-details-edit-delete">
+                <div class="btn-group">
+                    <a href="{% url 'edit add' ad.id %}" class="btn btn-sm btn-outline-secondary">Редактирай</a>
+                    <a href="{% url 'delete add' ad.id %}" class="btn btn-sm btn-outline-secondary"
+                       onclick="return confirm('Сигурни ли сте. че искате да изтриета обява №{{ ad.id }}');">Изтрий</a>
 
+                </div>
             </div>
+        {% endif %}
+        <div class="contact-info">
+            <strong>Телефон за връзка:</strong><span class="telephone-number">{{ ad.phone_number }}</span>
         </div>
-    {% endif %}
-    <div class="contact-info">
-        <strong>Телефон за връзка:</strong><span class="telephone-number">{{ ad.phone_number }}</span>
-    </div>
     </div>
     <div class="details-images">
         <div class="container">
@@ -51,9 +67,9 @@
                                                                 alt="Real Estate"></span>
                         <img class="card-img-top" src="{{ ad.image_one.url }}" alt="Card image cap">
                     </div>
-                    {% else %}
+                {% else %}
                     <div class="col-6 details-images-item">
-                                    <img class="card-img-top" src="{% static 'img/RealEstate_pic.png' %}" alt="Picture">
+                        <img class="card-img-top" src="{% static 'img/RealEstate_pic.png' %}" alt="Picture">
                     </div>
                 {% endif %}
                 {% if ad.image_two %}

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -110,9 +112,27 @@ def approve_add(request, pk):
     previous_url = request.META.get('HTTP_REFERER')
     ad_to_approve = Ad.objects.get(pk=pk)
     ad_to_approve.approved = True
+    ad_to_approve.rejected = False
+    ad_to_approve.comments_reject=''
     ad_to_approve.save()
     return redirect(previous_url)
 
+
+def reject_ad(request, pk):
+    previous_url = request.META.get('HTTP_REFERER')
+    ad = Ad.objects.get(pk=pk)
+    context = {
+        'ad_to_reject': AdForm(),
+        'ad': ad,
+    }
+    if request.method == "GET":
+        return render(request, 'reject_ad.html', context)
+    else:
+        comment = request.POST.get('comments_reject')
+        ad.rejected = True
+        ad.comments_reject = comment
+        ad.save()
+        return redirect('show details', ad.pk)
 
 @login_required()
 def create_add(request):
@@ -155,7 +175,10 @@ def edit_add(request, pk):
         add_form = AdForm(request.POST, request.FILES or None, instance=ad_to_edit)
         if add_form.is_valid():
             form = add_form.save(commit=False)
+            form.date_modified = datetime.now()
             form.approved = False
+            form.rejected = False
+            form.comments_reject = ''
             form.save()
             return redirect('show details', pk)
         else:

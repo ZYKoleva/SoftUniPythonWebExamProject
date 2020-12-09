@@ -80,6 +80,8 @@ class SortOptions(models.Model):
 class Ad(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     approved = models.BooleanField(default=False)
+    rejected = models.BooleanField(default=False)
+    comments_reject = models.TextField(blank=True)
     phone_number = models.CharField(max_length=14)
     date_modified = models.DateField(default=datetime.now())
     sale_or_rent = models.ForeignKey(SaleOrRent, on_delete=models.CASCADE)
