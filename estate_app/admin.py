@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, AdditionalFilter, LookingFor, TypePremise, \
+from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, AdditionalFilter,TypePremise, \
     SaleOrRent, NumberRooms, Construction, Elevator, Furniture, SortOptions
 
 admin.site.register(District)
@@ -15,7 +15,7 @@ admin.site.register(Elevator)
 admin.site.register(Furniture)
 admin.site.register(AdditionalFilter)
 admin.site.register(SortOptions)
-admin.site.register(LookingFor)
+
 
 
 class AdAdmin(admin.ModelAdmin):

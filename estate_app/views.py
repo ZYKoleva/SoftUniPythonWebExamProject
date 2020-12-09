@@ -6,7 +6,7 @@ from estate_app.core.clean_up_images import clean_up_image_files
 from estate_app.core.paginator import create_paginator
 from estate_app.core.validator import validate_creator
 from estate_app.forms import AdditionalFilterForm, AdForm
-from estate_app.models import District, DistrictCity, DistrictCityArea, Ad, LookingFor
+from estate_app.models import District, DistrictCity, DistrictCityArea, Ad
 from estate_app.core.sort_filter import process_filter_input
 
 
@@ -107,29 +107,23 @@ def show_details(request, pk):
 
 
 def approve_add(request, pk):
+    previous_url = request.META.get('HTTP_REFERER')
     ad_to_approve = Ad.objects.get(pk=pk)
     ad_to_approve.approved = True
     ad_to_approve.save()
-    return redirect('load home')
-
-
-def looking_for(request):
-    looking_for_items = LookingFor.objects.filter(approved=True)
-    for item in looking_for_items:
-        item.can_modify = request.user.is_superuser or item.created_by_id == request.user.id
-    context = {
-        'looking_for_items': looking_for_items
-    }
-    return render(request, 'looking_for.html', context)
+    return redirect(previous_url)
 
 
 @login_required()
 def create_add(request):
+    previous_url = request.META.get('HTTP_REFERER')
     if request.method == 'GET':
+        ad_form = AdForm()
         context = {
-            'ad_form': AdForm()
+            'ad_form': ad_form,
+            'previous_url': previous_url
         }
-        return render(request, 'create_add.html', context)
+        return render(request, 'create_add_2.html', context)
     else:
 
         add_form = AdForm(request.POST, request.FILES or None)
@@ -142,23 +136,24 @@ def create_add(request):
             context = {
                 'ad_form': AdForm(request.POST, request.FILES, instance=add_form)
             }
-            return render(request, 'create_add.html', context)
+            return render(request, 'create_add_2.html', context)
 
 
 @login_required()
 def edit_add(request, pk):
+    previous_url = request.META.get('HTTP_REFERER')
     ad_to_edit = Ad.objects.get(pk=pk)
     validate_creator(ad_to_edit, request.user)
     if request.method == 'GET':
         context = {
             'ad_form': AdForm(instance=ad_to_edit),
-            'reference_number': pk
+            'reference_number': pk,
+            'previous_url': previous_url
         }
         return render(request, 'edit_add.html', context)
     else:
         add_form = AdForm(request.POST, request.FILES or None, instance=ad_to_edit)
         if add_form.is_valid():
-
             form = add_form.save(commit=False)
             form.approved = False
             form.save()
@@ -177,3 +172,14 @@ def delete_add(request, pk):
     clean_up_image_files(ad_to_delete)
     ad_to_delete.delete()
     return redirect('load home')
+
+def load_areas(request):
+    city_id = request.GET.get('city_id')
+    areas = DistrictCityArea.objects.filter(city_id=city_id).all()
+    return render(request, 'area_dropdown_list_options.html', {'areas': areas})
+
+
+def load_cities(request):
+    district_id = request.GET.get('district_id')
+    cities = DistrictCity.objects.filter(district_id=district_id).all()
+    return render(request, 'city_dropdown_list_options.html', {'cities': cities})

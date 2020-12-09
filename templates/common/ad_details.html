@@ -14,7 +14,7 @@
         <h4> №{{ ad.id }}</h4>
         <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type_premise|lower }}</h3>
         <span class="details-price">{{ ad.price }} <i class="fas fa-euro-sign euro-sign"></i></span>
-        <h5 class="details-location">{{ ad.area }}</h5>
+        <h5 class="details-location">{{ ad.city }}, {{ ad.area }}</h5>
         <ul class="details-list">
             <li><strong>Етаж: </strong>{{ ad.floor }} от {{ ad.total_floors }}</li>
             <li><strong>Квадратура: </strong>{{ ad.square_meters }} кв.м.</li>

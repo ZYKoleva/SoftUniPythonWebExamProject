@@ -7,28 +7,31 @@ from estate_app.forms import AdditionalFilterForm
 def set_criteria(sale_or_rent, type_premise, number_rooms):
     criteria = {}
 
-    if sale_or_rent.name != 'Всички':
+    if sale_or_rent:
         criteria['sale_or_rent'] = sale_or_rent
-    if type_premise.name != 'Всички':
+    if type_premise:
         criteria['type_premise'] = type_premise
-    if number_rooms.name != 'Всички':
+    if number_rooms:
         criteria['number_rooms'] = number_rooms
 
     return criteria
 
 
 def sort_ads(sorting_type, ads):
-    if sorting_type.name == 'Най-нови':
-        ads = sorted(ads, key = lambda ad: ad.date_modified, reverse=True)
-        return ads
-    elif sorting_type.name == 'Цена Низходяща':
-        ads = sorted(ads, key = lambda ad: ad.price, reverse=True)
-        return ads
-    elif sorting_type.name == 'Цена Възходяща':
-        ads = sorted(ads, key = lambda ad: ad.price, reverse=False)
-        return ads
-    elif sorting_type.name == 'Най-гледани':
-        ads = sorted(ads, key = lambda ad: ad.counter_seen, reverse=True)
+    if sorting_type:
+        if sorting_type.name == 'Най-нови':
+            ads = sorted(ads, key = lambda ad: ad.date_modified, reverse=True)
+            return ads
+        elif sorting_type.name == 'Цена Низходяща':
+            ads = sorted(ads, key = lambda ad: ad.price, reverse=True)
+            return ads
+        elif sorting_type.name == 'Цена Възходяща':
+            ads = sorted(ads, key = lambda ad: ad.price, reverse=False)
+            return ads
+        elif sorting_type.name == 'Най-гледани':
+            ads = sorted(ads, key = lambda ad: ad.counter_seen, reverse=True)
+            return ads
+    else:
         return ads
 
 
@@ -40,12 +43,7 @@ def get_ads_filtered_and_sorted(filterinput, ads):
     sort = filterinput.cleaned_data['sort']
     criteria = set_criteria(sale_or_rent, type_premise, number_rooms)
     ads = ads.filter(**criteria)
-    if sort.name == '---':
-        return ads
-    elif sort.name == 'Топ оферти':
-        ads = [ad for ad in ads if ad.top_offer==True]
-    else:
-        ads = sort_ads(sorting_type=sort, ads=ads)
+    ads = sort_ads(sorting_type=sort, ads=ads)
     return ads
 
 

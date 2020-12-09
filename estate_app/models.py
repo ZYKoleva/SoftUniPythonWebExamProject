@@ -5,7 +5,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class District(models.Model):
     name = models.CharField(max_length=50)
 
@@ -88,8 +87,8 @@ class Ad(models.Model):
     city = models.ForeignKey(DistrictCity, on_delete=models.CASCADE)
     area = models.ForeignKey(DistrictCityArea, on_delete=models.CASCADE)
     type_premise = models.ForeignKey(TypePremise, on_delete=models.CASCADE)
-    price = models.IntegerField()
-    square_meters = models.IntegerField()
+    price = models.PositiveIntegerField()
+    square_meters = models.PositiveIntegerField()
     floor = models.IntegerField()
     total_floors = models.IntegerField()
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE)
@@ -122,15 +121,7 @@ class Ad(models.Model):
 class AdditionalFilter(models.Model):
     pending_approval = models.BooleanField(default=False)
     my_add = models.BooleanField(default=False)
-    type_premise = models.ForeignKey(TypePremise, on_delete=models.CASCADE, default=6)
-    number_rooms = models.ForeignKey(NumberRooms, on_delete=models.CASCADE, default=1)
-    sort = models.ForeignKey(SortOptions, on_delete=models.CASCADE, default=1)
-    sale_or_rent = models.ForeignKey(SaleOrRent, on_delete=models.CASCADE, default=1)
-
-
-class LookingFor(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_modified = models.DateField(default=datetime.now())
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    approved = models.BooleanField(default=False)
+    type_premise = models.ForeignKey(TypePremise, on_delete=models.CASCADE, blank=True)
+    number_rooms = models.ForeignKey(NumberRooms, on_delete=models.CASCADE, blank=True)
+    sort = models.ForeignKey(SortOptions, on_delete=models.CASCADE, blank=True)
+    sale_or_rent = models.ForeignKey(SaleOrRent, on_delete=models.CASCADE, blank=True)
