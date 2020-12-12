@@ -1,6 +1,6 @@
 <div class="location-filter-wrapper">
     {% if user.is_authenticated %}
-        <div class="create-add">
+        <div class="create-ad">
             <a href="{% url 'create ad' %}" class="btn btn-info">Добави обява</a>
         </div>
     {% endif %}
@@ -12,7 +12,7 @@
 <div class="dropdown">
     <button class="btn btn-sm btn-outline-secondary dropbtn">{{ district.name }}</button>
     <div class="dropdown-content">
-        <a href="{% url 'load home' %}">Всички</a>
+        <a href="{% url 'home' %}">Всички</a>
     </div>
 </div>
         </section>
@@ -21,7 +21,7 @@
 <div class="dropdown">
     <button class="btn btn-sm btn-outline-secondary dropbtn">{{ city.name }}</button>
     <div class="dropdown-content">
-        <a href="{% url 'load district' district.id %}">Всички</a>
+        <a href="{% url 'district' district.id %}">Всички</a>
 
     </div>
 </div>
@@ -32,7 +32,7 @@
     <button class="btn btn-sm btn-outline-secondary dropbtn">Всички</button>
     <div class="dropdown-content">
         {% for area in areas %}
-            <a href="{% url 'load area' area.id %}">{{ area.name }}</a>
+            <a href="{% url 'area' area.id %}">{{ area.name }}</a>
         {% endfor %}
     </div>
 </div>

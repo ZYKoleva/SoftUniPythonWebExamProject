@@ -1,27 +1,29 @@
 {% extends 'common/base.html' %}
 {% load static %}
-    {% block site_style %}
-        <link rel="stylesheet" href="{%  static 'style/register_login.css' %}">
-    {% endblock %}
+{% block site_style %}
+    <link rel="stylesheet" href="{% static 'style/register_login.css' %}">
+{% endblock %}
 {% block site_content %}
     <div class="container-register">
-  <h5 class="register-title">Вход</h5>
-    <form action="{% url 'login' %}" method="post" class="form-register">
-    {% csrf_token %}
-        <div class="form-group ">
-            {% if wrong_credentials %}
-            <span>Потребителското име и/или паролата не съвпадат. Моля опитайте пак</span>
-            {% endif %}
-            <label for="exampleInputEmail1">Потребителско име</label>
-            {{ login_form.username }}
+        <h5 class="register-title">Вход</h5>
+        <p class="redirect-to-register-wrapper">Ако нямате създаден профил, регистрирайте се <a
+                href="{% url 'register' %}">тук</a></p>
+        <form action="{% url 'login' %}" method="post" class="form-register">
+            {% csrf_token %}
+            <div class="form-group ">
+                <div class="error-messages-wrapper">
+                    <p class="error-messages-text">{{ wrong_credentials|striptags }}</p>
+                </div>
+                <label for="exampleInputEmail1">Потребителско име</label>
+                {{ login_form.username }}
 
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Парола</label>
-            {{ login_form.password }}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Парола</label>
+                {{ login_form.password }}
 
-        </div>
-        <button class="btn btn-info btn-register-submit">Влез</button>
-    </form>
+            </div>
+            <button class="btn btn-info btn-register-submit">Влез</button>
+        </form>
     </div>
 {% endblock %}

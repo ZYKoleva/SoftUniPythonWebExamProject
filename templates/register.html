@@ -5,18 +5,23 @@
 {% endblock %}
 {% block site_content %}
     <div class="container-register">
-    <h5 class="register-title">Регистрация</h5>
-    <form action="{% url 'register' %}" method="post" class="form-register">
-    {% csrf_token %}
-        {{ register_form.errors|striptags }}
-       {{ register_form.username.label }}
-       {{ register_form.username }}
+        <h5 class="register-title">Регистрация</h5>
+        <p class="redirect-to-login-wrapper">Ако вече имате профил, влезте от <a href="{% url 'login' %}">тук</a></p>
+        <form action="{% url 'register' %}" method="post" class="form-register">
+            {% csrf_token %}
+            <div class="error-messages-wrapper">
+                <p class="error-messages-text">{{ username_error|striptags}}</p>
+                <p class="error-messages-text">{{ passwords_error|striptags }}</p>
+            </div>
 
-       {{ register_form.password1.label }}
-       {{ register_form.password1 }}
-       {{ register_form.password2.label }}
-       {{ register_form.password2 }}
-        <button class="btn btn-info btn-register-submit">Запази</button>
-    </form>
+            {{ register_form.username.label }}
+            {{ register_form.username }}
+
+            {{ register_form.password1.label }}
+            {{ register_form.password1 }}
+            {{ register_form.password2.label }}
+            {{ register_form.password2 }}
+            <button class="btn btn-info btn-register-submit">Запази</button>
+        </form>
     </div>
 {% endblock %}

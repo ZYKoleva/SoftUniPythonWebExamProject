@@ -12,7 +12,7 @@
                 <h5 class="card-title rules-card-title">Търсите да купите или наемете имот?</h5>
                 <p class="card-text rules-wrapper-text text-muted">
                     Заповядайте да разгледате нашите
-                    <a href="{% url 'load home' %}">обяви</a>
+                    <a href="{% url 'home' %}">обяви</a>
                 </p>
             </div>
             <div class="card-body">
@@ -24,8 +24,8 @@
                     обяви.
                 </p>
                 <p class="card-text rules-wrapper-text text-muted">
-                    <a href="" class="btn btn-sm btn-outline-secondary">Регистрация</a>
-                    <a href="" class="btn btn-sm btn-outline-secondary">Вход</a>
+                    <a href="{% url 'register' %}" class="btn btn-sm btn-outline-secondary">Регистрация</a>
+                    <a href="{% url 'login' %}" class="btn btn-sm btn-outline-secondary">Вход</a>
                 </p>
             </div>
         </div>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
+
 .manage-ads-title {
     text-align: center;
     margin-top: 20px;
@@ -24,9 +26,9 @@
     justify-content: space-around;
 }
 
-.top-offer-checkbox-wrapper {
-    margin-bottom: 20px;
-    text-align: center;
+.help-notes {
+    font-family: 'Caveat', cursive;
+    font-weight: 200;
 }
 
 .create-ad-description {

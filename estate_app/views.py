@@ -33,7 +33,6 @@ def load_home_page(request):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    # return process_filter_input(request, context, 'home_page.html', ads, filterinput)
     context = process_filter_input(request, context, ads, filterinput)
     list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
@@ -52,7 +51,6 @@ def district(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    # return process_filter_input(request, context, 'district_page.html', ads, filterinput)
     context = process_filter_input(request, context, ads, filterinput)
     list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
@@ -71,7 +69,6 @@ def city(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    # return process_filter_input(request, context, 'city_page.html', ads, filterinput)
     context = process_filter_input(request, context, ads, filterinput)
     list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
@@ -90,7 +87,6 @@ def area(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    # return process_filter_input(request, context, 'area_page.html', ads, filterinput)
     context = process_filter_input(request, context, ads, filterinput)
     list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
@@ -108,7 +104,7 @@ def show_details(request, pk):
     return render(request, 'details.html', context)
 
 
-def approve_add(request, pk):
+def approve_ad(request, pk):
     previous_url = request.META.get('HTTP_REFERER')
     ad_to_approve = Ad.objects.get(pk=pk)
     ad_to_approve.approved = True
@@ -119,7 +115,6 @@ def approve_add(request, pk):
 
 
 def reject_ad(request, pk):
-    previous_url = request.META.get('HTTP_REFERER')
     ad = Ad.objects.get(pk=pk)
     context = {
         'ad_to_reject': AdForm(),
@@ -134,8 +129,9 @@ def reject_ad(request, pk):
         ad.save()
         return redirect('show details', ad.pk)
 
+
 @login_required()
-def create_add(request):
+def create_ad(request):
     previous_url = request.META.get('HTTP_REFERER')
     if request.method == 'GET':
         ad_form = AdForm()
@@ -143,24 +139,24 @@ def create_add(request):
             'ad_form': ad_form,
             'previous_url': previous_url
         }
-        return render(request, 'create_add_2.html', context)
+        return render(request, 'create_ad.html', context)
     else:
 
-        add_form = AdForm(request.POST, request.FILES or None)
-        if add_form.is_valid():
-            form = add_form.save(commit=False)
+        ad_form = AdForm(request.POST, request.FILES or None)
+        if ad_form.is_valid():
+            form = ad_form.save(commit=False)
             form.created_by = request.user
             form.save()
             return redirect('show details', form.id)
         else:
             context = {
-                'ad_form': AdForm(request.POST, request.FILES, instance=add_form)
+                'ad_form': AdForm(request.POST, request.FILES, instance=ad_form)
             }
-            return render(request, 'create_add_2.html', context)
+            return render(request, 'create_ad.html', context)
 
 
 @login_required()
-def edit_add(request, pk):
+def edit_ad(request, pk):
     previous_url = request.META.get('HTTP_REFERER')
     ad_to_edit = Ad.objects.get(pk=pk)
     validate_creator(ad_to_edit, request.user)
@@ -170,11 +166,11 @@ def edit_add(request, pk):
             'reference_number': pk,
             'previous_url': previous_url
         }
-        return render(request, 'edit_add.html', context)
+        return render(request, 'edit_ad.html', context)
     else:
-        add_form = AdForm(request.POST, request.FILES or None, instance=ad_to_edit)
-        if add_form.is_valid():
-            form = add_form.save(commit=False)
+        ad_form = AdForm(request.POST, request.FILES or None, instance=ad_to_edit)
+        if ad_form.is_valid():
+            form = ad_form.save(commit=False)
             form.date_modified = datetime.now()
             form.approved = False
             form.rejected = False
@@ -183,26 +179,29 @@ def edit_add(request, pk):
             return redirect('show details', pk)
         else:
             context = {
-                'ad_form': add_form
+                'ad_form': ad_form,
             }
-            return render(request, 'edit_add.html', context)
+            return render(request, 'edit_ad.html', context)
 
 
 @login_required()
-def delete_add(request, pk):
+def delete_ad(request, pk):
     ad_to_delete = Ad.objects.get(pk=pk)
     validate_creator(ad_to_delete, request.user)
     clean_up_image_files(ad_to_delete)
     ad_to_delete.delete()
-    return redirect('load home')
-
-def load_areas(request):
-    city_id = request.GET.get('city_id')
-    areas = DistrictCityArea.objects.filter(city_id=city_id).all()
-    return render(request, 'area_dropdown_list_options.html', {'areas': areas})
+    return redirect('home')
 
 
 def load_cities(request):
     district_id = request.GET.get('district_id')
-    cities = DistrictCity.objects.filter(district_id=district_id).all()
+    cities = DistrictCity.objects.filter(district_id=district_id)
     return render(request, 'city_dropdown_list_options.html', {'cities': cities})
+
+
+def load_areas(request):
+    city_id = request.GET.get('city_id')
+    areas = DistrictCityArea.objects.filter(city_id=city_id)
+    return render(request, 'area_dropdown_list_options.html', {'areas': areas})
+
+

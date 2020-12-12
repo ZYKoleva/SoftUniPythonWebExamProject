@@ -7,7 +7,7 @@
         <h3 class="product-details-title">{{ ad.number_rooms }} {{ ad.type_premise|lower }}</h3>
         <h5 class="details-location">{{ ad.city }}, {{ ad.area }}</h5>
 
-<form method="post" action="{% url 'reject add' ad.id %}">
+<form method="post" action="{% url 'reject ad' ad.id %}">
     {% csrf_token %}
   <div class="form-group">
     <label for="comments_reject">Коментар</label>

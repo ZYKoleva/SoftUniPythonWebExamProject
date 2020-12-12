@@ -10,7 +10,7 @@
         <div class="manage-ads-title">
             <h4 class="manage-ads-title-text">Редактирай обява №{{ reference_number }}</h4>
         </div>
-        <form class="sections-create-add" action='{% url 'edit add' reference_number %}' method="post"
+        <form class="sections-create-ad" action='{% url 'edit ad' reference_number %}' method="post"
               enctype="multipart/form-data">
             {% csrf_token %}
             <div class="container">
@@ -27,11 +27,11 @@
                         <label for="exampleFormControlSelect1">Цена</label>
                         {{ ad_form.price }}
                     </div>
-                    <div id='districtForm' data-cities-url="{% url 'load cities' %}" class="form-group">
+                    <div id='districtField' data-cities-url="{% url 'load cities' %}" class="form-group">
                         <label for="district">Област</label>
                         {{ ad_form.district}}
                     </div>
-                    <div id='cityForm' data-areas-url="{% url 'load areas' %}" class="form-group">
+                    <div id='cityField' data-areas-url="{% url 'load areas' %}" class="form-group">
                         <label for="city">Град/Село</label>
                         {{ ad_form.city }}
                     </div>

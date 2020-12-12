@@ -15,10 +15,10 @@
 
         {% if user.is_superuser and not ad.approved %}
             {% if not ad.rejected %}
-                <form action="{% url 'approve add' ad.id %}" method="post" class="approve-form">
+                <form action="{% url 'approve ad' ad.id %}" method="post" class="approve-form">
                     {% csrf_token %}
                     <button class="btn btn-info" type="submit">Одобри обявата</button>
-                    <a href="{% url 'reject add' ad.id %}" class="btn btn-danger reject-btn">Отхвърли обявата</a>
+                    <a href="{% url 'reject ad' ad.id %}" class="btn btn-danger reject-btn">Отхвърли обявата</a>
                 </form>
             {% else %}
                 <h5>Обявата не е одобрена</h5>
@@ -45,8 +45,8 @@
 
             <div class="d-flex justify-content-between align-items-center btn-group-details-edit-delete">
                 <div class="btn-group">
-                    <a href="{% url 'edit add' ad.id %}" class="btn btn-sm btn-outline-secondary">Редактирай</a>
-                    <a href="{% url 'delete add' ad.id %}" class="btn btn-sm btn-outline-secondary"
+                    <a href="{% url 'edit ad' ad.id %}" class="btn btn-sm btn-outline-secondary">Редактирай</a>
+                    <a href="{% url 'delete ad' ad.id %}" class="btn btn-sm btn-outline-secondary"
                        onclick="return confirm('Сигурни ли сте. че искате да изтриета обява №{{ ad.id }}');">Изтрий</a>
 
                 </div>

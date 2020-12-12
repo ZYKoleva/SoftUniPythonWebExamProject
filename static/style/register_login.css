@@ -4,14 +4,33 @@
 }
 
 .register-title{
-    margin: 25px 40px;
+    margin: 25px 40px 10px 40px;
     color: darkred;
+}
+.redirect-to-login-wrapper, .redirect-to-register-wrapper {
+    font-family: 'Caveat', cursive;
+    font-size: 12px;
+    margin-left: 50px;
+}
+.redirect-to-login-wrapper a, .redirect-to-register-wrapper a{
+    font-size: 17px;
+
 }
 
 .form-register {
     margin: 20px;
     padding: 20px;
     width: 600px;
+}
+
+.error-messages-text {
+    font-family: 'Caveat', cursive;
+    font-size: 15px;
+    color: indianred;
+}
+
+.form-register input {
+    margin-bottom: 20px;
 }
 
 .btn-register-submit {

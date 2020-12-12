@@ -3,7 +3,6 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
 
 class District(models.Model):
     name = models.CharField(max_length=50)
@@ -122,7 +121,7 @@ class Ad(models.Model):
 
 class AdditionalFilter(models.Model):
     pending_approval = models.BooleanField(default=False)
-    my_add = models.BooleanField(default=False)
+    my_ad = models.BooleanField(default=False)
     type_premise = models.ForeignKey(TypePremise, on_delete=models.CASCADE, blank=True)
     number_rooms = models.ForeignKey(NumberRooms, on_delete=models.CASCADE, blank=True)
     sort = models.ForeignKey(SortOptions, on_delete=models.CASCADE, blank=True)

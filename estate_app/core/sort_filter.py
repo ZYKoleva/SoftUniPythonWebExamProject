@@ -1,6 +1,3 @@
-import os
-
-from django.shortcuts import render
 from estate_app.forms import AdditionalFilterForm
 
 
@@ -47,31 +44,6 @@ def get_ads_filtered_and_sorted(filterinput, ads):
     return ads
 
 
-# def process_filter_input2(request, context, url, ads, filterinput):
-#     if filterinput.is_valid():
-#         ads = get_ads_filtered_and_sorted(filterinput, ads)
-#         for ad in ads:
-#             ad.can_modify = request.user.is_superuser or ad.created_by == request.user
-#         context['ads'] = ads
-#         if request.user.is_superuser and filterinput.cleaned_data['pending_approval']:
-#             context['ads'] = [ad for ad in ads if not ad.approved]
-#             context['pending_approval'] = True
-#
-#         elif filterinput.cleaned_data['my_add']:
-#             context['ads'] = [ad for ad in ads if ad.created_by==request.user]
-#         else:
-#             context['ads'] = [ad for ad in ads if ad.approved]
-#
-#         context['filterinput'] = filterinput
-#         return render(request, url, context)
-#     else:
-#         for ad in ads:
-#             ad.can_modify = request.user.is_superuser or ad.created_by == request.user
-#         context['ads'] = [ad for ad in ads if ad.approved]
-#         context['filterinput'] = AdditionalFilterForm()
-#         return render(request, url, context)
-
-
 def process_filter_input(request, context, ads, filterinput):
     get_copy = request.GET.copy()
     if get_copy.get('page'):
@@ -86,7 +58,7 @@ def process_filter_input(request, context, ads, filterinput):
             context['ads'] = [ad for ad in ads if not ad.approved]
             context['pending_approval'] = True
 
-        elif filterinput.cleaned_data['my_add']:
+        elif filterinput.cleaned_data['my_ad']:
             context['ads'] = [ad for ad in ads if ad.created_by==request.user]
         else:
             context['ads'] = [ad for ad in ads if ad.approved]

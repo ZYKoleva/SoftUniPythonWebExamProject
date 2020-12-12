@@ -1,22 +1,22 @@
 from django.urls import path
 
 from estate_app.views import load_home_page, district, city, area, show_details, \
-    create_add, AboutUsTemplateView, GeneralRulesTemplateView, approve_add, edit_add, delete_add, load_areas, \
+    create_ad, AboutUsTemplateView, GeneralRulesTemplateView, approve_ad, edit_ad, delete_ad, load_areas, \
     load_cities, reject_ad
 
 urlpatterns = [
-    path('', load_home_page, name='load home'),
-    path('about/', AboutUsTemplateView.as_view(), name='load about us'),
-    path('general_rules/', GeneralRulesTemplateView.as_view(), name='load general rules'),
-    path('district/<int:pk>', district, name='load district'),
-    path('city/<int:pk>', city, name='load city'),
-    path('area/<int:pk>', area, name='load area'),
+    path('', load_home_page, name='home'),
+    path('about/', AboutUsTemplateView.as_view(), name='about'),
+    path('general_rules/', GeneralRulesTemplateView.as_view(), name='general rules'),
+    path('district/<int:pk>', district, name='district'),
+    path('city/<int:pk>', city, name='city'),
+    path('area/<int:pk>', area, name='area'),
     path('details/<int:pk>/', show_details, name='show details'),
-    path('create_add/', create_add, name='create ad'),
-    path('approve_add/<int:pk>/', approve_add, name='approve add'),
-    path('reject_ad/<int:pk>/', reject_ad, name='reject add'),
-    path('edit_add/<int:pk>/', edit_add, name='edit add'),
-    path('delete_add/<int:pk>/', delete_add, name='delete add'),
+    path('create_ad/', create_ad, name='create ad'),
+    path('approve_ad/<int:pk>/', approve_ad, name='approve ad'),
+    path('reject_ad/<int:pk>/', reject_ad, name='reject ad'),
+    path('edit_ad/<int:pk>/', edit_ad, name='edit ad'),
+    path('delete_ad/<int:pk>/', delete_ad, name='delete ad'),
     path('ajax_load_areas/', load_areas, name='load areas'),
     path('ajax_load_cities/', load_cities, name='load cities'),
 ]

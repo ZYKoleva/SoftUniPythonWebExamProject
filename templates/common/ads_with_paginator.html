@@ -7,7 +7,7 @@
             {% if page_obj %}
                 {% for ad in page_obj %}
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="card mb-4 box-shadow card-container">
                             {% if ad.image_one %}
                                 <img class="card-img-top" src="{{ ad.image_one.url }}" alt="Missing Picture">
                                 <span class="span-brand-label"><img class="details-brand-label"
@@ -22,25 +22,30 @@
 
                                 <h5 class="card-title">{{ ad.type_premise }} {{ ad.price }} <i
                                         class="fas fa-euro-sign euro-sign"></i></h5>
-                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.area }}, {{ ad.square_meters }} кв.м. </p>
+                                <p class="card-text">{{ ad.number_rooms }}, {{ ad.area }}, {{ ad.square_meters }}
+                                    кв.м. </p>
                                 <p class="card-text text-muted">{{ ad.city }} </p>
                                 <p class="card-text box-body-card-text">{{ ad.description|truncatewords:30 }}...</p>
                                 <span class="last-modified">
                                     <small class="text-muted">Обновена: {{ ad.date_modified|date:"SHORT_DATE_FORMAT" }}</small>
                                 </span>
-
-                                <div class="d-flex justify-content-between align-items-center btn-group-details-edit-delete">
-                                    <div class="btn-group">
-                                        <a href="{% url 'show details' ad.pk %}"
-                                           class="btn btn-sm btn-outline-secondary">Разгледай</a>
-                                        {% if ad.can_modify %}
-                                            <a href="{% url 'edit add' ad.pk %}"
-                                               class="btn btn-sm btn-outline-secondary">Редактирай</a>
-                                            <a href="{% url 'delete add' ad.pk %}"
-                                               class="btn btn-sm btn-outline-secondary"
-                                               onclick="return confirm('Сигурни ли сте. че искате да изтриета обява №{{ ad.id }}');">Изтрий</a>
-                                        {% endif %}
-                                    </div>
+                                {% if not ad.approved %}
+                                    <span class="pending-approval">
+                                    <small class="pending-approval-text">Чака за одобрение</small>
+                                </span>
+                                {% endif %}
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center btn-group-details-edit-delete">
+                                <div class="btn-group">
+                                    <a href="{% url 'show details' ad.pk %}"
+                                       class="btn btn-sm btn-outline-secondary">Разгледай</a>
+                                    {% if ad.can_modify %}
+                                        <a href="{% url 'edit ad' ad.pk %}"
+                                           class="btn btn-sm btn-outline-secondary">Редактирай</a>
+                                        <a href="{% url 'delete ad' ad.pk %}"
+                                           class="btn btn-sm btn-outline-secondary"
+                                           onclick="return confirm('Сигурни ли сте. че искате да изтриета обява №{{ ad.id }}');">Изтрий</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -50,7 +55,7 @@
                 <p1 class="no-ads-available">Няма намерени чакащи за одобрение обяви, които да отговарят на зададените
                     критерии
                 </p1>
-            {% elif request.GET.my_add %}
+            {% elif request.GET.my_ad %}
                 <p1 class="no-ads-available">Няма намерени ваши обяви, които да отговарят на зададените
                     критерии
                 </p1>

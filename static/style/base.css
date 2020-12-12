@@ -13,13 +13,14 @@
 
 .header-container{
     top: 0;
+     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+
 }
 
 header {
     background-color: rgb(253, 236, 166);
     border-radius: 5px;
     padding: 30px;
-
 }
 .header-wrapper, .top-nav, .nav-list {
     display: flex;
@@ -29,11 +30,14 @@ header {
 }
 .header-wrapper {
     justify-content: space-between;
+
 }
 
 .navbar-brand {
     font-family: 'Kalam', cursive;
     font-size: 2em;
+    text-shadow: 2px 2px lightblue;
+
 }
 
 .user-name {
@@ -59,8 +63,7 @@ header {
 }
 
 #active {
-    color: indianred;
-    font-size: 23px;
+    font-weight: bold;
 }
 
 

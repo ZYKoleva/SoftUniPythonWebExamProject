@@ -19,7 +19,7 @@
     padding-top: 30px;
 }
 
-.filter-btn-wrapper, .col-auto, .form-row{
+.filter-btn-wrapper, .col-auto, .form-row {
     display: inline-block;
 }
 
@@ -28,11 +28,11 @@
     height: 40px;
 }
 
-.products-row{
-    margin-left: -180px;
+.products-row {
+    margin-left: -200px;
 }
 
-.details-content{
+.details-content {
     display: inline-block;
     width: 600px;
     margin-right: 50px;
@@ -42,7 +42,7 @@
 
 }
 
-.details-images{
+.details-images {
     display: inline-block;
     width: 800px;
 }
@@ -56,20 +56,21 @@
     margin-top: 30px;
 }
 
-.product-details-title, .details-price{
+.product-details-title, .details-price {
     display: inline;
     color: darkred;
 
 }
 
-.details-price{
+.details-price {
     position: absolute;
-    left:500px;
+    left: 500px;
     font-size: 1.5em;
 
 }
-.euro-sign{
-   font-size: 15px;
+
+.euro-sign {
+    font-size: 15px;
 }
 
 .details-location {
@@ -84,13 +85,13 @@
 }
 
 .span-brand-label {
-    width:100px;
+    width: 100px;
     height: 30px;
     position: absolute;
 }
 
-.front-brand-label{
-    width:120px;
+.front-brand-label {
+    width: 120px;
     position: absolute;
     margin-top: -240px;
     margin-left: 5px;
@@ -106,14 +107,18 @@
 }
 
 .details-brand-label {
-    width:120px;
+    width: 120px;
     position: absolute;
     margin-top: 15px;
     margin-left: 5px;
 
 }
 
-.card-img-top{
+.card-container {
+    height: 620px;
+}
+
+.card-img-top {
     height: 250px;
 }
 
@@ -134,16 +139,24 @@
     margin-bottom: 50px;
 }
 
-.btn-group-details-edit-delete {
+.pending-approval {
     margin-top: 20px;
+    margin-left: 240px;
+    margin-bottom: 50px;
+    font-family: 'Kalam', cursive;
+    color: indianred;
+}
+
+.btn-group-details-edit-delete {
+    margin: 12px;
 }
 
 .no-ads-available {
-    margin-left:15px;
+    margin-left: 15px;
 }
 
 .reject_ad {
-        width: 300px;
+    width: 300px;
     margin-left: 40px;
 }
 

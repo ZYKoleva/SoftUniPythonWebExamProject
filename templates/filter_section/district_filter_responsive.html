@@ -12,7 +12,7 @@
 <div class="dropdown">
     <button class="btn btn-sm btn-outline-secondary dropbtn">{{ district.name }}</button>
     <div class="dropdown-content">
-        <a href="{% url 'load home' %}">Всички</a>
+        <a href="{% url 'home' %}">Всички</a>
     </div>
 </div>
         </section>
@@ -22,7 +22,7 @@
     <button class="btn btn-sm btn-outline-secondary dropbtn">Всички</button>
     <div class="dropdown-content">
         {% for city in cities %}
-            <a href="{% url 'load city' city.id %}">{{ city.name }}</a>
+            <a href="{% url 'city' city.id %}">{{ city.name }}</a>
         {% endfor %}
     </div>
 </div>
@@ -32,9 +32,6 @@
 <div class="dropdown">
     <button class="btn btn-sm btn-outline-secondary dropbtn">Всички</button>
     <div class="dropdown-content">
-{#        {% for area in areas %}#}
-{#            <a href="{% url 'load area' area.id %}">{{ area.name }}</a>#}
-{#        {% endfor %}#}
     </div>
 </div>
         </section>

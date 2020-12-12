@@ -13,8 +13,6 @@
         <link rel="stylesheet" href="{% static 'style/filter-section-responsive.css' %}">
         <link rel="stylesheet" href="{% static 'style/common_ads.css' %}">
     {% endblock %}
-    <script src="../static/javascript/js.js"></script>
-
     {% block site_script %}
     {% endblock %}
 </head>
@@ -43,11 +41,11 @@
         <nav class="nav-wrapper">
             <ul class="nav-list">
                 <li class="nav-list-item">
-                    <a href="{% url 'load about us' %}" class="nav-link-about">За сайта</a></li>
+                    <a href="{% url 'about' %}" class="nav-link-about">За сайта</a></li>
                 <li class="nav-list-item">
-                    <a href="{% url 'load home' %}" class="nav-link-rent-sale">Продавам/Отдавам</a></li>
+                    <a href="{% url 'home' %}" class="nav-link-rent-sale">Продавам/Отдавам</a></li>
                 <li class="nav-list-item">
-                    <a href="{% url 'load general rules' %}" class="nav-link-general-rules">Общи условия</a></li>
+                    <a href="{% url 'general rules' %}" class="nav-link-general-rules">Общи условия</a></li>
             </ul>
         </nav>
     </header>
@@ -60,6 +58,6 @@
 {% if page_obj %}
     {% include 'common/paginator.html' %}
 {% endif %}
-
+    <script src="{% static 'javascript/js.js' %}"></script>
 </body>
 </html>

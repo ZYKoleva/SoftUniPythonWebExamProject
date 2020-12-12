@@ -19,8 +19,8 @@ admin.site.register(SortOptions)
 
 
 class AdAdmin(admin.ModelAdmin):
-    list_display = ('id', 'city', 'area', 'type_premise', 'created_by', 'approved')
-    list_filter = ('approved', 'date_modified')
+    list_display = ('id', 'city', 'area', 'type_premise', 'created_by', 'approved', 'rejected')
+    list_filter = ('approved', 'date_modified', 'rejected')
 
 
 admin.site.register(Ad, AdAdmin)
