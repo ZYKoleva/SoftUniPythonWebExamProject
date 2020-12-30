@@ -4,7 +4,7 @@
 
 }
 
-.about-us-text h5, .rules-card-title {
+.about-us-text h5, .rules-card-title, .rules-card-title-contacts {
     font-family: 'Kalam', cursive;
     padding-bottom: 10px;
 }
@@ -13,4 +13,12 @@
     padding-top: 20px;
     padding-bottom: 20px;
 
+}
+.rules-card-title-contacts {
+    padding-top: 30px;
+}
+.about-us-contact-info {
+    margin: 0 5px;
+    font-family: 'Kalam', cursive;
+    color: blue;
 }
