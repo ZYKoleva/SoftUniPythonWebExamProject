@@ -2,7 +2,7 @@ from django.urls import path
 
 from estate_app.views import load_home_page, district, city, area, show_details, \
     create_ad, AboutUsTemplateView, GeneralRulesTemplateView, approve_ad, edit_ad, delete_ad, load_areas, \
-    load_cities, reject_ad
+    load_cities, reject_ad, AdListApiView
 
 urlpatterns = [
     path('', load_home_page, name='home'),
@@ -19,4 +19,5 @@ urlpatterns = [
     path('delete_ad/<int:pk>/', delete_ad, name='delete ad'),
     path('ajax_load_areas/', load_areas, name='load areas'),
     path('ajax_load_cities/', load_cities, name='load cities'),
+    path('rest/', AdListApiView.as_view(), name='ads list api')
 ]

@@ -20,6 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin_estate/', admin.site.urls),
+    path('rest_api/', include('rest_framework.urls')),
     path('', include('estate_app.urls')),
     path('auth/', include('estate_app_auth.urls'))
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

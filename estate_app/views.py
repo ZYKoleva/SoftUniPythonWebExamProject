@@ -1,8 +1,8 @@
 from datetime import datetime
-
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from rest_framework.response import Response
 
 from estate_app.core.clean_up_images import clean_up_image_files
 from estate_app.core.paginator import create_paginator
@@ -10,6 +10,9 @@ from estate_app.core.validator import validate_creator
 from estate_app.forms import AdditionalFilterForm, AdForm
 from estate_app.models import District, DistrictCity, DistrictCityArea, Ad
 from estate_app.core.sort_filter import process_filter_input
+from rest_framework import views as rest_views
+
+from estate_app.serializer import AdSerializer
 
 
 class AboutUsTemplateView(TemplateView):
@@ -203,5 +206,12 @@ def load_areas(request):
     city_id = request.GET.get('city_id')
     areas = DistrictCityArea.objects.filter(city_id=city_id)
     return render(request, 'area_dropdown_list_options.html', {'areas': areas})
+
+
+class AdListApiView(rest_views.APIView):
+    def get(self, request):
+        books = Ad.objects.all()
+        serializer = AdSerializer(books, many=True)
+        return Response(serializer.data)
 
 

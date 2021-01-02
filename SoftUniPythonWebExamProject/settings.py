@@ -13,6 +13,8 @@ from os.path import join
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import SoftUniPythonWebExamProject
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -37,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'estate_app',
-    'estate_app_auth'
+    'estate_app_auth',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +136,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')
 
 LOGIN_URL = '/auth/login/'
+
