@@ -41,6 +41,7 @@ def load_home_page(request):
         ref_num = filterinput.data.get('reference_number')
         ad = Ad.objects.filter(pk=ref_num, approved=True)
         if len(ad) > 0:
+            ad[0].can_modify = request.user.is_superuser or ad.created_by == request.user
             list_ads.append(ad[0])
         context['filterinput'] = filterinput
     else:
@@ -67,6 +68,7 @@ def district(request, pk):
         ref_num = filterinput.data.get('reference_number')
         ad = Ad.objects.filter(pk=ref_num, approved=True)
         if len(ad) > 0:
+            ad[0].can_modify = request.user.is_superuser or ad.created_by == request.user
             list_ads.append(ad[0])
         context['filterinput'] = filterinput
     else:
@@ -93,6 +95,7 @@ def city(request, pk):
         ref_num = filterinput.data.get('reference_number')
         ad = Ad.objects.filter(pk=ref_num, approved=True)
         if len(ad) > 0:
+            ad[0].can_modify = request.user.is_superuser or ad.created_by == request.user
             list_ads.append(ad[0])
         context['filterinput'] = filterinput
     else:
@@ -119,6 +122,7 @@ def area(request, pk):
         ref_num = filterinput.data.get('reference_number')
         ad = Ad.objects.filter(pk=ref_num, approved=True)
         if len(ad) > 0:
+            ad[0].can_modify = request.user.is_superuser or ad.created_by == request.user
             list_ads.append(ad[0])
         context['filterinput'] = filterinput
     else:
