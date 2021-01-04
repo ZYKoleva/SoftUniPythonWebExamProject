@@ -124,6 +124,19 @@ class RegisterLoginTests(unittest.TestCase):
         location = driver.current_url
         self.assertEqual(location, "http://localhost:8000/auth/login/")
 
+    def test_9_superuser_login_successfully(self):
+        driver = self.driver
+        driver.get("http://localhost:8000/auth/login/")
+        login_username = driver.find_element_by_id('id_username')
+        login_username.send_keys('zoey')
+        login_password = driver.find_element_by_id('id_password')
+        login_password.send_keys('test')
+        button_to_click = driver.find_element_by_class_name('btn-register-submit')
+        button_to_click.click()
+
+        location = driver.current_url
+        self.assertEqual(location, "http://localhost:8000/")
+
 
     def tearDown(self):
         self.driver.close()

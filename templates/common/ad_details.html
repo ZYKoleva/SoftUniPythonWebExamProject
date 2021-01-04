@@ -17,8 +17,8 @@
             {% if not ad.rejected %}
                 <form action="{% url 'approve ad' ad.id %}" method="post" class="approve-form">
                     {% csrf_token %}
-                    <button class="btn btn-info" type="submit">Одобри обявата</button>
-                    <a href="{% url 'reject ad' ad.id %}" class="btn btn-danger reject-btn">Отхвърли обявата</a>
+                    <button class="btn btn-info" type="submit" id="details-approve-ad">Одобри обявата</button>
+                    <a href="{% url 'reject ad' ad.id %}" class="btn btn-danger reject-btn" id="details-reject-ad">Отхвърли обявата</a>
                 </form>
             {% else %}
                 <h5>Обявата не е одобрена</h5>

@@ -88,7 +88,9 @@ class AdditionalFilterForm(forms.ModelForm):
             'sort': forms.Select(attrs={
                 'class': 'form-control'
             }),
-
+            'reference_number': forms.TextInput(attrs={
+                'class': 'form-control'
+            })
         }
 
 

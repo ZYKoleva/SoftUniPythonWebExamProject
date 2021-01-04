@@ -6,7 +6,7 @@
         <div class="row products-row">
             {% if page_obj %}
                 {% for ad in page_obj %}
-                    <div class="col-md-4" ad_id="{{ ad.id }}">
+                    <div class="col-md-4" id="{{ ad.id }}">
                         <div class="card mb-4 box-shadow card-container">
                             {% if ad.image_one %}
                                 <img class="card-img-top" src="{{ ad.image_one.url }}" alt="Missing Picture">

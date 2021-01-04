@@ -126,3 +126,4 @@ class AdditionalFilter(models.Model):
     number_rooms = models.ForeignKey(NumberRooms, on_delete=models.CASCADE, blank=True)
     sort = models.ForeignKey(SortOptions, on_delete=models.CASCADE, blank=True)
     sale_or_rent = models.ForeignKey(SaleOrRent, on_delete=models.CASCADE, blank=True)
+    reference_number = models.CharField(max_length=50, blank=True)

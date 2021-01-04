@@ -36,8 +36,16 @@ def load_home_page(request):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    context = process_filter_input(request, context, ads, filterinput)
-    list_ads = context['ads']
+    list_ads = []
+    if filterinput.data.get('reference_number'):
+        ref_num = filterinput.data.get('reference_number')
+        ad = Ad.objects.filter(pk=ref_num, approved=True)
+        if len(ad) > 0:
+            list_ads.append(ad[0])
+        context['filterinput'] = filterinput
+    else:
+        context = process_filter_input(request, context, ads, filterinput)
+        list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
     return render(request, 'home_page.html', context)
 
@@ -54,8 +62,16 @@ def district(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    context = process_filter_input(request, context, ads, filterinput)
-    list_ads = context['ads']
+    list_ads = []
+    if filterinput.data.get('reference_number'):
+        ref_num = filterinput.data.get('reference_number')
+        ad = Ad.objects.filter(pk=ref_num, approved=True)
+        if len(ad) > 0:
+            list_ads.append(ad[0])
+        context['filterinput'] = filterinput
+    else:
+        context = process_filter_input(request, context, ads, filterinput)
+        list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
     return render(request, 'district_page.html', context)
 
@@ -72,8 +88,16 @@ def city(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    context = process_filter_input(request, context, ads, filterinput)
-    list_ads = context['ads']
+    list_ads = []
+    if filterinput.data.get('reference_number'):
+        ref_num = filterinput.data.get('reference_number')
+        ad = Ad.objects.filter(pk=ref_num, approved=True)
+        if len(ad) > 0:
+            list_ads.append(ad[0])
+        context['filterinput'] = filterinput
+    else:
+        context = process_filter_input(request, context, ads, filterinput)
+        list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
     return render(request, 'city_page.html', context)
 
@@ -90,8 +114,16 @@ def area(request, pk):
         'ads': ads,
     }
     filterinput = AdditionalFilterForm(request.GET)
-    context = process_filter_input(request, context, ads, filterinput)
-    list_ads = context['ads']
+    list_ads = []
+    if filterinput.data.get('reference_number'):
+        ref_num = filterinput.data.get('reference_number')
+        ad = Ad.objects.filter(pk=ref_num, approved=True)
+        if len(ad) > 0:
+            list_ads.append(ad[0])
+        context['filterinput'] = filterinput
+    else:
+        context = process_filter_input(request, context, ads, filterinput)
+        list_ads = context['ads']
     context['page_obj'] = create_paginator(request, list_ads)
     return render(request, 'area_page.html', context)
 
